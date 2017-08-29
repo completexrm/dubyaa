@@ -1,0 +1,21 @@
+.col-lg-12.col-md-12.col-sm-12.col-xs-12
+	.p10l.p10r
+		label Timezone
+		select#onboardTimezone.form-control
+			option(value="0") Your timezone...
+			- if(profile.prefs.tzOffset==='-180')
+				option(value="-180" selected) American/Pacific
+			- else
+				option(value="-180") American/Pacific
+			- if(profile.prefs.tzOffset==='-120')
+				option(value="-120" selected) American/Mountain
+			- else
+				option(value="-120") American/Mountain
+			- if(profile.prefs.tzOffset==='-60')
+				option(value="-60" selected) American/Central
+			- else
+				option(value="-60") American/Central
+			- if(profile.prefs.tzOffset==='0')
+				option(value="0" selected) American/Eastern
+			- else
+				option(value="0") American/Eastern

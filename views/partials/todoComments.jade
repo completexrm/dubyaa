@@ -1,0 +1,10 @@
+- if(comments.isGoodTotal !== '' || comments.isBadTotal !== '')
+	.clearfix.bold.font-sm
+		.pull-left.m5r.p5r.border-right 
+			span.ion-thumbsup.p5r
+			| #{comments.isGoodTotal} Kudos!
+		.pull-left
+			span.ion-thumbsdown.p5r
+			| #{comments.isBadTotal} Boos!
+- else
+	.meta No reactions yet...sit tight, they're coming!

@@ -1,0 +1,409 @@
+@import 'main';
+#todoCover {
+	position: absolute; 
+	top: 0; 
+	left:0; 
+	bottom:0; 
+	right:0; 
+	background: white; 
+	opacity: 0.5;
+	z-index:999;
+}
+.todo {
+	position: relative;
+	background-color: white;
+	box-shadow: -1px 1px 3px #999;
+	// &.is-delegated {
+	// 	border-left: 6px solid @flatYellow;
+	// }
+	&.is-dubyaa {
+		border-left: 6px solid @flatGreen;
+	}
+	&.is-deleted {
+		border-left: 6px solid @flatRed;
+	}
+	.todo-tools {
+		// width: 4%;
+		// float: left;
+		ul {
+			li {
+				a {
+					background: @bgNavInactive;
+					padding: 3px 0;
+					display: block;
+					.border-bottom;
+					.border-right;
+					.border-dark;
+					.tx;
+					span {
+				        color: @textBlack;
+				        opacity: 0.4;
+					}
+					&:hover {
+						background: @bgWhite;
+						span {
+							opactiy: 1.0;
+						}
+					}
+				}
+				&.active {
+					a {
+						background: @bgNavActive;
+						border-right: 1px solid white;
+						span {
+							color: @appBlue;
+							opacity: 1.0;
+						}
+					}
+					&.todo-edit {
+						a {
+							
+						}
+					}
+				}
+			}
+			> li:first-child {
+				a {
+					border-radius: 3px 0 0 0;
+				}
+			}
+			> li:last-child {
+				a {
+					border-radius: 0 0 0 3px;
+					border-bottom:0;
+				}
+			}
+		}
+	}
+	.todo-body, .todo-btns {
+		// width: 82%;
+		// float: left;
+		height: 100px;
+		position: relative;
+		.text {
+			padding-top:5px;
+			height: 95px;
+			textarea {
+				border:0;
+				width: 99%;
+				height: 70%;
+				padding-left: 1%;
+				resize:none;
+				font-size: 13pt;
+				.tx;
+				&:disabled {
+					background: white;
+					opacity: 0.5;
+				}
+			}
+		}
+	}
+	.todo-btns {
+		// width: 14%;
+		// float: left;
+		border-radius: 0 3px 3px 0;
+		.btns-container {
+			.border-left;
+			.border-dark;
+			height: 100%;
+			.points-container {
+				position: relative;
+				.points {
+					height: 50px;
+					display: block;
+					.border-bottom;
+					color: @appBlue;
+					line-height: 48px;
+					font-size: 13pt;
+					.arrow {
+						font-size: 13pt;
+						position: relative;
+						top: 2px;
+					}
+					.check {
+						font-size: 19pt;
+					}
+					&.won {
+						color: @appGreen;
+						font-weight: 700;
+						.arrow {
+							display: none;
+						}
+					}
+					&.open {
+						.border-dark;
+					}
+				}
+				.points-selector {
+					position: absolute;
+					width: 82%;
+					top: 49px;
+					left: 19%;
+					z-index:101;
+					.border-left;
+					.border-right;
+					.border-bottom;
+					.border-dark;
+					border-radius: 0 0 3px 3px;
+					background: @bgWhite;
+					li {
+						a {
+							display: block;
+							padding-left: 10px;
+							font-size: 11pt;
+							color: @textBlack;
+							span {
+								visibility: hidden;
+								font-size: 14pt;
+								position: relative;
+								padding-right: 5px;
+							}
+							&:hover {
+								text-decoration: none;
+								background: #f3f3f3;								
+							}
+						}
+						&.selected {
+							a {
+								color: @appBlue;
+								span {
+									visibility: visible;
+								}
+							}
+						}
+					}
+				}
+			}
+			.dubyaa {
+				background: @bgNavInactive;
+				color: @textBlack;
+				display: block;
+				height: 50px;
+				line-height: 48px;
+				font-weight: 700;
+				letter-spacing: -1px;
+				font-size: 14pt;
+				font-family: "Courier New";
+				&:hover {
+					text-decoration: none;
+					color: black;
+					-webkit-transform: rotateY(360deg);
+					-webkit-transform-style: preserve-3d;
+					transform: rotateY(360deg);
+					transform-style: preserve-3d;
+				}
+				&.dubyaa-won {
+					background: @appGreen;
+					color: white;
+				}
+			}
+		}
+	}
+	.todo-ops {
+		position: absolute;
+		bottom: 0;
+		left: 10%;
+		width: 70%;
+		a:not(.set-due-date) {
+			font-size: 18pt;
+			color: @textBlack;
+		}
+		.saved-tag {
+			color: @textBlack;
+			opacity: 0.5;
+			font-size: 8pt;
+		}
+		.date-time-due {
+		    font-size: 9pt;
+		    position: absolute;
+		    right: 0;
+		    top: 5px;
+		    span.icon {
+		    	font-size: 13pt;
+		    	font-weight: 700;
+		    	position: relative;
+		    	top: 2px;
+		    	padding-right: 3px;
+		    	opacity: 0.75;
+		    }
+		    &.no-due-date {
+		    	color: @statusColorNotOK;
+		    	opacity: 0.75;
+		    }
+		}
+	}
+	.todo-tags {
+		width: 81%;
+		position: absolute;
+		bottom: 5px;
+		left: 5%;
+		z-index: 100;
+		input.add-tag {
+			background: #efeded;
+			border:0;
+			outline: none;
+			.radius-round;
+			font-size: 8pt;
+			font-weight: 700;
+			padding: 3px 2%;
+			width: 96%;
+			display: block;
+		}
+		.tags {
+			padding-top: 1px;
+			.tag {
+				margin-right: 3px;
+				.tag-text, .tag-delete {
+					color: white;
+					text-decoration: none;
+					font-size: 8pt;
+				}
+				.tag-delete {
+					border-left: 1px solid white;
+					padding: 2px 5px 2px 4px;
+					border-radius: 0 2px 2px 0;
+					background: #c47ac5;
+					font-weight: 500;
+					&:hover {
+						background: #b766b8;
+					}
+				}
+				.tag-text {
+					.tx;
+					cursor: pointer;
+					font-weight: 700;
+					padding: 2px 6px 2px 5px;
+					border-radius: 2px 0 0 2px;
+					background: #b766b8;
+					opacity: 0.85;
+					&:hover {
+						opacity: 1.0;
+					}
+					&.on {
+						background: #572058;
+						opacity: 1.0;
+					}
+				}
+			}
+		}
+	}
+	&.mobile {
+		border-bottom: 3px solid #ddd;
+		input.date {
+			font-size: 9pt;
+			text-align: right;
+			.border-bottom;
+			border:0;
+			padding:0;
+			width: 100%;
+			line-height: 14px;
+			color: @flatBlue;
+		}
+		select.form-control {
+			padding: 3px 3px 2px 3px;
+			height: auto;
+			border-radius: 2px;
+		}
+		background: transparent;
+		box-shadow: 0 0 0;
+		input:not(.date) {
+			background: transparent;
+			color: rgba(0, 0, 0, 0.8);
+			font-size: 11pt;
+			padding: 0;
+			border:0;
+			&:focus {
+				color: rgba(0, 0, 0, 1.0) !important;
+				border:0;
+			}
+		}
+		.date-time-due {
+			.meta;
+			font-size: 8pt;
+			line-height: 23px;
+			.icon, .set-date-tag {
+				display: none;
+			}
+		}
+		.mobile-low {
+			.p5t;
+			.p5b;
+			.p10l;
+			.p10r;
+			.meta, .date-time-due {
+				font-size: 9pt;
+			}
+		}
+		.btn {
+			font-size: 14pt;
+			font-weight: bold;
+			padding: 4px;
+			line-height: 1;
+			color: rgba(0,0,0,0.6);
+			&:hover {
+				color: rgba(0,0,0,1.0);
+			}
+			&.delete-todo {
+				padding:0;
+				display: block;
+				width: 100%;
+				color: @flatRed;
+			}
+			&.backlog-to-list, &.save-backlog-todo, &.relegate-todo {
+				padding:0;
+				display: block;
+				width: 100%;
+				color: @flatBlue;
+			}
+			&.torch-todo, &.torch-backlog-todo {
+				padding:0;
+				display: block;
+				width: 100%;
+				color: @flatRed;
+			}
+			&.set-due-date {
+				padding:0;
+				font-weight: 500;
+				text-transform: none;
+				font-size: 9pt;
+				color: @flatBlue;
+			}
+			&.save-date {
+				padding:0;
+				color: @flatPurple;
+				font-size: 12pt;
+			}
+			&.undo-dubyaa {
+				padding:0;
+				display: block;
+				padding:0;
+				color: @flatBlue;
+			}
+			&.undelete-todo {
+				padding:0;
+				display: block;
+				padding:0;
+				color: @flatBlue;
+			}
+			&.delegate-todo {
+				padding:0;
+				display: block;
+				width: 100%;
+				color: @flatYellow;
+			}
+			&.faux-save {
+				padding: 10px 0;
+				font-size: 12pt;
+				font-weight: 500;
+				background: @flatBlue;
+				color: white;
+				display: block;
+			}
+			&.dubyaa-won, &.dubyaa-notwon {
+				color: white;
+				font-size: 8pt;
+				padding: 7px;
+			}
+		}
+	}
+}

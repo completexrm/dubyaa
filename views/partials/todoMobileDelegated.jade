@@ -1,0 +1,6 @@
+.row.border-bottom
+	.col-md-12.col-sm-12.col-xs-12
+		.meta.p5b.p10l(style="font-size:8pt;")
+			| Delegated to you by #{todo.delegatorName} on #{moment(todo.delegateDate).format('MMM D')}
+			- if(Number(todo.isBacklog) && todo.dateDue)
+				span.p5l :: expires on #{moment(todo.dateDue).format('MMM Do')}

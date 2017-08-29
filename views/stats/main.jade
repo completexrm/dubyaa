@@ -1,0 +1,105 @@
+extends ../layout
+
+append body
+	script(src='/js/controllers/stats.js')
+
+block header
+	include ../partials/header
+
+block content
+	#content
+		#stats
+			#appData(data-is-mobile="#{session.dataPlatform.uaMobile}", data-first-name="#{session.dubyaaUser.user.firstName}", data-last-name="#{session.dubyaaUser.user.lastName}", data-multiplier="#{session.dubyaaUser.account.prefs.dubyaaMultiplier}", data-maxopen="#{session.dubyaaUser.account.prefs.maxOpen}", data-acctid="#{session.dubyaaUser.user.accountId}", data-userid="#{session.dubyaaUser.user.id}", data-si="#{si}", data-firstlogin="#{session.dubyaaUser.user.isFirstLogin}", data-app-hints="#{session.dubyaaUser.prefs.appHints}")
+			#productivityScore
+				
+				.row.stats-header
+					.col-lg-12.col-md-12.col-sm-12.col-xs-12
+						.dropdown.stat-selector
+							a.stat-tag.block(type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+								span.leaderboard-tag.p5r ...
+								| leaderboard
+								span.caret
+							ul#accountMonthList.dropdown-menu(aria-labelledby="dLabel")
+				//- .row.stats-header.secondary
+					.col-lg-12.col-md-12.col-sm-12.col-xs-12
+						| leaderboard
+				- if(Number(session.dubyaaUser.prefs.appHints)===1)
+					include ../partials/help/helpLeaderboard
+				.row
+					.col-lg-12.col-md-12.col-sm-12.col-xs-12
+						include ../partials/noLeaderboard
+						#leaderboard
+							#loader
+								include ../partials/loader
+				//- .row.stats-header.secondary
+					.col-lg-12.col-md-12.col-sm-12.col-xs-12
+						span.leaderboard-tag.p5r
+						| Productivity Scores
+				//- #trendingNeutral.row.stats-header.tertiary.gray.hide
+					.col-lg-12.col-md-12.col-sm-12.col-xs-12
+						| &nbsp;even keel...no change
+				//- #trendingUp.row.stats-header.tertiary.green.hide
+					.col-lg-12.col-md-12.col-sm-12.col-xs-12
+						span.trending-diff.p5r.bold
+						| up from yesterday!
+				//- #trendingDown.row.stats-header.tertiary.hide
+					.col-lg-12.col-md-12.col-sm-12.col-xs-12
+						span.trending-diff.p5r.bold
+						| &nbsp;down from yesterday!
+				//- .row
+					.col-lg-12.col-md-12.col-sm-12.col-xs-12
+						#productivity.border-right
+							include ../home/noScore
+				//- .row.border-top
+					.col-lg-12.col-md-12.col-sm-12.col-xs-12
+						#accountProductivity
+							include ../home/noScore
+			//- #primary
+				//- .row.stats-header.secondary
+				//- 	.col-lg-12.col-md-12.col-sm-12.col-xs-12
+				//- 		| Progress Against Your Goals
+				//- .row.border-top
+				//- 	.col-lg-12.col-md-12.col-sm-12.col-xs-12
+				//- 		#pointsMonth.align-center.goal-gauge
+				//- .row.border-top
+				//- 	.col-lg-12.col-md-12.col-sm-12.col-xs-12
+				//- 		#pointsQuarter.align-center.goal-gauge
+				//- .row.border-top
+				//- 	.col-lg-12.col-md-12.col-sm-12.col-xs-12
+				//- 		#pointsYear.align-center.goal-gauge
+				
+				.row.stats-header.secondary
+					.col-lg-12.col-md-12.col-sm-12.col-xs-12
+						| WHAT YOUR PEERS THINK OF YOU
+				.row.border-top.p10t.p10b
+					.col-lg-4.col-md-4.col-sm-4.col-xs-4.border-right
+						#socialPositive.align-center
+							h1.number
+							.meta KUDO'S
+					.col-lg-4.col-md-4.col-sm-4.col-xs-4.border-right
+						#socialDispute.align-center
+							h1.number
+							.meta DISPUTES
+					.col-lg-4.col-md-4.col-sm-4.col-xs-4.border-right
+						#socialNegative.align-center
+							h1.number
+							.meta BOO'S
+				.row.stats-header.secondary
+					.col-lg-12.col-md-12.col-sm-12.col-xs-12
+						| WHAT YOU THINK OF YOUR PEERS
+				.row.border-top.p10t.p10b
+					.col-lg-4.col-md-4.col-sm-4.col-xs-4.border-right
+						#socialPositiveGiven.align-center
+							h1.number
+							.meta KUDO'S
+					.col-lg-4.col-md-4.col-sm-4.col-xs-4.border-right
+						#socialDisputeGiven.align-center
+							h1.number
+							.meta DISPUTES
+					.col-lg-4.col-md-4.col-sm-4.col-xs-4.border-right
+						#socialNegativeGiven.align-center
+							h1.number
+							.meta BOO'S
+						
+			block footer
+				include ../partials/footer

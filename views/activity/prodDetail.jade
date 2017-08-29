@@ -1,0 +1,7 @@
+.col-md-6.col-sm-6.col-xs-6 #{user.displayName}
+.col-md-4.col-sm-4.col-xs-4 #{user.lastActivityDate !== "" ? moment(user.lastActivityDate).format('MMM Do[, @ ]h:mma') : "--"}
+.col-md-2.col-sm-3.col-xs-2.align-right
+	.prod-loading.hide
+		include ../partials/loader
+	a.btn.btn-danger.do-prod(data-user-id="#{user.id}", data-email="#{user.emailAddress}")
+		.fa.fa-hand-o-right

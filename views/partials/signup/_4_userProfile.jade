@@ -1,0 +1,39 @@
+#userProfile.hide.signup-step(data-step="4")
+	.row.stats-header
+		.col-md-12.col-sm-12.col-xs-12
+			| tell us about you
+	.row
+		.col-md-12.col-sm-12.col-xs-12
+			.p10
+				#userProfileEntries.border-bottom.p10b.m10b
+					.profile-item
+						.meta.small
+							| EMAIL & USERNAME
+						.bold.profile-email-address
+				#profileFirstName.profile-item
+					.clearfix.w100
+						.entry.pull-left.w95
+							input#firstName.form-control(placeholder="First Name...")
+						.status.pull-right.w5.align-right
+							include ../statusSymbols
+				#profileLastName.profile-item
+					.clearfix.w100
+						.entry.pull-left.w95
+							input#lastName.form-control(placeholder="Last Name...")
+						.status.pull-right.w5.align-right
+							include ../statusSymbols
+				#profilePassword.profile-item
+					.clearfix.w100
+						.entry.pull-left.w95
+							input#password.form-control(type="password", placeholder="Password...")
+						.status.pull-right.w5.align-right
+							include ../statusSymbols
+					.meta.small At least 8 characters
+			.operands
+				.clearfix.p10
+					.pull-left
+						a.go-login(href="/login") Goto Login
+					.pull-right
+						a.btn.btn-warning.go-back.m5r(data-step="3")
+							span.fa.fa-chevron-left
+						a#finishSignup.btn.btn-success.disabled Done!

@@ -1,0 +1,48 @@
+each team, id in teams
+	.row.stats-header.secondary.team-roster.border-bottom
+		.col-lg-12.col-md-12.col-sm-12.col-xs-12 
+			.clearfix
+				- var teamLeadTag = (Number(loggedInUser.user.id)===Number(team.info.teamLeadId)) ? ' - your team!' : '';
+				.pull-left.p10l
+					b #{team.info.displayName}
+					| #{teamLeadTag}
+				.pull-right.p10r
+					span.arrow.ion-ios-arrow-up
+	.users
+		each user, id in team.users
+			.user(data-id="#{user.id}")
+				.record.tx
+					.row.border-bottom
+						.col-lg-9.col-md-9.col-sm-9.col-xs-9
+							.row
+								.col-lg-12.col-md-21.col-sm-12.col-xs-12
+									.clearfix.p10l.p5t
+										.pull-left.w10
+											- var url = (user.photoPath) ? '/uploads/' + user.photoPath : '/images/profile-generic.png';
+											img.block.w100(src="#{url}")
+										.pull-left.w90
+											.p5l
+												a.view-items.block(data-is-loaded="false", title="#{user.displayName}'s #{team.info.displayName} items")
+													| #{user.displayName}
+							.row
+								.col-lg-12.col-md-21.col-sm-12.col-xs-12
+									.p10l.p5t.p5b
+										.tagline
+											- if(typeof user.tagLine !=='undefined' && user.tagLine !=='')
+												| "#{user.tagLine}"
+											- else
+												em No tagline
+						.col-lg-3.col-md-3.col-sm-3.col-xs-3
+							.clearfix
+								.pull-left.w50
+									a.btn.btn-primary.view-items.block(data-is-loaded="false", title="#{user.displayName}'s #{team.info.displayName} items")
+										span.fa.fa-bars
+								.pull-left.w50
+									a.btn.btn-success.block(href="/stats/#{user.id}", title="View #{user.displayName}'s stats")
+										span.fa.fa-area-chart
+									//- a.block.btn.btn-warning.do-suggest(title="Make a suggestion to #{user.displayName}", href="#newSuggestion", data-toggle="modal", data-user-id="#{user.id}")
+									//- 	| Suggestion
+				.items.row.hide.border-dashed
+					.col-lg-12.col-md-12.col-sm-12.col-xs-12
+						.loader
+							include ../partials/loader

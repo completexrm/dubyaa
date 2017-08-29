@@ -1,0 +1,5 @@
+- if(Number(session.dubyaaUser.account.isTrial)===1 && Number(session.dubyaaUser.user.isAccountAdmin)===1)
+	#accountTrial.trial-notice.m10t
+		span.ion-alert-circled.font-l
+		| You have #{session.dubyaaUser.account.trialRemaining} days remaining in your trial! 
+		a.purchase(href="/account") Purchase now

@@ -1,0 +1,9 @@
+- var isAdmin = (Number(user.isAccountAdmin)===1) ? ' (Account Administrator)' : '';
+tr
+	td
+		a.edit-user(href="#editUser", data-toggle="modal", data-admin="#{user.isAccountAdmin}", data-id="#{user.id}", data-display="#{user.displayName}", data-first="#{user.firstName}", data-last="#{user.lastName}", data-email="#{user.emailAddress}")
+			span.ion-person.p5r
+			| #{user.firstName} #{user.lastName}#{isAdmin}
+	td.align-right
+		a.btn.btn-danger.delete-user(data-id="#{user.id}", data-name="#{user.displayName}", data-email="#{user.emailAddress}")
+			.fa.fa-trash

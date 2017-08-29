@@ -1,0 +1,11 @@
+extends ../layoutLogin
+
+append body
+	script(src='/js/controllers/loginauto.js')
+
+block content
+	#loginAuto.login-form
+		#appData(data-key="#{key}", data-email="#{email}")
+		include ../partials/loader
+		#login.hide
+			a.btn.btn-primary(href="/login") Continue to Login

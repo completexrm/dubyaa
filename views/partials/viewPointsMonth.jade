@@ -1,0 +1,22 @@
+- var noGoalMTDClass = (month.goal > 0) ? 'hide' : '';
+- var noGoalMTDBarClass = (!month.goal || month.goal === 0) ? 'hide' : '';
+
+- if(Number(month.pts)===0)
+	include noPoints
+- else
+	- var mClass = (Number(month.percent) < 20) ? 'danger' : (Number(month.percent) < 75) ? 'warning' : 'success';
+	.mtd 
+		.no-goal.border-bottom.p10.alert-danger(class="#{noGoalMTDClass}")
+			.clearfix
+				.pull-left.p5r
+					span.ion-sad-outline.icon.font-xl
+				.pull-left
+					.bold You don't have a #{moment().format('MMMM')} goal
+					.meta
+						a.manage-goals Create one now 
+						| to see your points!
+		.clearfix(class="#{noGoalMTDBarClass}")
+			h5.progress-label.pull-left #{moment().format('MMMM YYYY')}
+			.meta.pull-right #{month.percent}%
+		.progress(class="#{noGoalMTDBarClass}")
+			.progress-bar.progress-bar-striped.tx(class="progress-bar-#{mClass}", role="progressbar", aria-valuenow="#{month.percent}", aria-valuemin="0", aria-valuemax="100", style="width: #{month.percent}%;")

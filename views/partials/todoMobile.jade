@@ -1,0 +1,46 @@
+- var textWon = 'DUBYAAA!', textOpen = 'dubyaa?', updateDate;
+- if(todo.updatedOn !=='' && Number(todo.isDeleted)===0)
+	- updateDate = 'Saved ' + moment(todo.updatedOn).format('MMMM Do YYYY, h:mm:ss a');
+- else if(Number(todo.isDeleted))
+	- updateDate = 'Deleted ' + moment(todo.updatedOn).format('MMMM Do YYYY, h:mm:ss a');
+- else
+	- updateDate = '';
+- var todoDelegatedClass = (todo.delegatorId > 0) ? 'is-delegated' : '';
+- var todoDeletedClass = (Number(todo.isDeleted) === 1) ? 'is-deleted' : '';
+.todo.mobile.needs-id(id="todo#{todo.id}", class="#{todoDelegatedClass} #{todoDeletedClass} #{(todo.isDubyaa==='1') ? 'is-dubyaa' : ''} #{(todo.hideDubyaa==='1') ? ' hide' : ''}", data-id="#{todo.id}")
+	.row.mobile-top
+		.col-lg-12.col-md-12.col-sm-12.col-xs.12
+			.todo-container.p10.border-bottom.clearfix
+				- if(Number(todo.isDeleted)===0 || typeof todo.isDeleted==='undefined')
+					.pull-right.w10.align-center
+						a.delete-todo.btn.border-left(title="Archive this item")
+							i.fa.fa-archive
+					- if(Number(todo.isDubyaa)===0)
+						.pull-right.w10.align-center
+							//- a.btn.delegate-todo.border-left.needs-id(title="Delegate to another user", href="#todoDelegate", data-toggle="modal", data-id="#{todo.id}")
+								.fa.fa-mail-forward
+							a.btn.relegate-todo.border-left.needs-id(title="Save this one for later", data-id="#{todo.id}")
+								span.ion-arrow-down-c
+					- else
+						.pull-right.w10.align-center
+							a.btn.undo-dubyaa.border-left(title="Unmark as a win")
+								.fa.fa-undo
+				- else
+					.pull-right.w10.align-center
+						a.btn.torch-todo.border-left
+							.fa.fa-trash(title="Delete forever")
+					.pull-right.w10.align-center
+						a.undelete-todo.btn.border-left
+							i.fa.fa-undo(title="Undelete this item")
+				.pull-left.w80
+					- if(Number(todo.isDeleted)===1 || Number(todo.isDubyaa)===1)
+						.todo-label #{todo.label}
+					- else
+						input.form-control.todo-item(value="#{todo.label}", placeholder="Something wildly important!")
+	- var lowHideClass = (todo.updatedOn==='' || typeof todo.updatedOn === 'undefined') ? 'hide' : '';
+	.row.mobile-low(class="#{lowHideClass}")
+		include todoMobileOperands
+	- if(todo.updatedOn==='' || typeof todo.updatedOn === 'undefined')
+		include todoMobileSave
+	- if(Number(todo.delegatorId) > 0)
+		include todoMobileDelegated

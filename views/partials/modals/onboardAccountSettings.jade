@@ -1,0 +1,7 @@
+- if(Number(session.dubyaaUser.user.isAccountAdmin) > 0)
+	.clearfix
+		label Dubyaa Points Multiplier #{session.dubyaaUser.user.isAccountAdmin}
+		input#onboardDubyaaMultiplier.form-control(value="#{session.dubyaaUser.account.prefs.dubyaaMultiplier}", placeholder="Points reward for finishing a to-do before due date...e.g., 1.5")
+	.clearfix
+		label Max # of Unfinished Important Things
+		input#onboardMaxOpen.form-control(value="#{session.dubyaaUser.account.prefs.maxOpen}", placeholder="e.g., 10")

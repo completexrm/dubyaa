@@ -1,0 +1,16 @@
+#modalManageTeamMembers(data-acctid="#{session.dubyaaUser.user.accountId}", data-userid="#{session.dubyaaUser.user.id}")
+	#manageTeamMembers.modal.fade
+		input#teamId(type="hidden", value="")
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type="button", data-dismiss="modal", aria-label="Close")
+						span(aria-hidden="true") &times;
+					h4.modal-title Change Team Lead
+				.modal-body.clearfix
+					label Team Lead
+					select#teamLeadId.form-control()
+						option(value="") ...
+				.modal-footer
+					button.btn.btn-default(type="button", data-dismiss="modal") Close
+					button#doChangeTeamLead.btn.btn-primary(type="button") Save Changes

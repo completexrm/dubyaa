@@ -1,0 +1,66 @@
+//- #modalSetGoal(data-userid="#{session.dubyaaUser.user.id}")
+	#manageGoals.modal.fade
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type="button", data-dismiss="modal", aria-label="Close")
+						span(aria-hidden="true") &times;
+					h4.modal-title Set Your Goals for this Year
+				.modal-body
+					#goalYear
+						p
+							label(for="amount") Yearly Goal:
+							input.goal-slide-tag(type="text", readonly)
+						.goal-slide
+					#goalQuarter
+						p
+							label(for="amount") Quarterly Goal:
+							input.goal-slide-tag(type="text", readonly)
+						.goal-slide
+					#goalMonth
+						p
+							label(for="amount") Monthly Goal:
+							input.goal-slide-tag(type="text", readonly)
+						.goal-slide
+				.modal-footer
+					button.btn.btn-default(type="button", data-dismiss="modal") Close
+					button.save-goal.btn.btn-primary(type="button", data-goal-type="Y", data-goal-parent="modalSetGoalYear") Save Changes
+#modalSetGoal(data-userid="#{session.dubyaaUser.user.id}")
+	#manageGoals.modal.fade
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type="button", data-dismiss="modal", aria-label="Close")
+						span(aria-hidden="true") &times;
+					h4.modal-title How Ambitious Are You?...
+				.modal-body
+					.clearfix
+						.pull-left.w80
+							p
+								span.font-l How many points do you want to average a day?
+								br
+								span.meta This will set your goals for the current, year, quarter and month
+						.pull-right.w20
+							input#avgPointsDay.form-control(type="number", value="#{session.dubyaaUser.prefs.avgPointsDay}")
+					.border-top.border-bottom.p10t.p10b.m10t
+						.clearfix
+							#goalsYear.pull-left.w33.align-center
+								span Annual : 
+								span.calc-pts 0
+								span.calc-pts-tag pts 
+							#goalsQuarter.pull-left.w33.align-center
+								span Quarterly : 
+								span.calc-pts 0
+								span.calc-pts-tag pts 
+							#goalsMonth.pull-left.w33.align-center
+								span Monthly : 
+								span.calc-pts 0
+								span.calc-pts-tag pts 
+					.clearfix.p10t
+						.meta Points are accumulated by completing your most important things, especially on time!
+						.meta
+							| Example: If you want 3 Dubyaa's a day, averaging 3 points each, you should enter 
+							span.bold 9.
+				.modal-footer
+					button.btn.btn-default(type="button", data-dismiss="modal") Close
+					button.save-goal.btn.btn-primary(type="button", data-goal-type="Y", data-goal-parent="modalSetGoalYear") Save Changes

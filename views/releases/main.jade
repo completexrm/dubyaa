@@ -1,0 +1,103 @@
+extends ../layoutLogin
+
+
+block append content
+	.row.stats-header.tertiary.blue
+		.col-md-12.col-sm-12.col-xs-12
+			a.block(href="/") go back
+	.row.stats-header
+		.col-md-12.col-sm-12.col-xs-12 beta 1.0.0
+	.row.stats-header.secondary
+		.col-md-12.col-sm-12.col-xs-12 released Aug 17 7:15pm MDT
+	.row
+		.col-md-12.col-sm-12.col-xs-12
+			ul.release-notes
+				li Added screen-based application help tips.
+				li Gave account admins ability to manage account badge/levels
+				li Corrected UI issue with taglines
+				li Adjusted leaderboard tally to account for multiplier for items done ahead of expiration date
+				li Began feature to give team leads ability to offer "rewards" to team members
+	.row.stats-header
+		.col-md-12.col-sm-12.col-xs-12 alpha 0.9.3
+	.row.stats-header.secondary
+		.col-md-12.col-sm-12.col-xs-12 released Aug 13 4:00pm MDT
+	.row
+		.col-md-12.col-sm-12.col-xs-12
+			ul.release-notes
+				li refactored leaderboard to show more like a leaderboard
+				li added month selection option for leaderboard to show past winners for the months.
+				li added feature to select month on user stat screen
+
+	.row.stats-header
+		.col-md-12.col-sm-12.col-xs-12 alpha 0.9.2
+	.row.stats-header.secondary
+		.col-md-12.col-sm-12.col-xs-12 released Aug 13 1:00pm MDT
+	.row
+		.col-md-12.col-sm-12.col-xs-12
+			ul.release-notes
+				li corrected odd message count bubble -- issue is corrected, number refreshes every 15 seconds, and shows primary messages that you have not yet read.
+				li added feature that puts messages with recent replies at the top of the list
+	.row.stats-header
+		.col-md-12.col-sm-12.col-xs-12 alpha 0.9.1
+	.row.stats-header.secondary
+		.col-md-12.col-sm-12.col-xs-12 released Aug 13 11:30am MDT
+	.row
+		.col-md-12.col-sm-12.col-xs-12
+			ul.release-notes
+				li added option on individual user stat screens to change the month for the current year to report on. the default view is for the current month, but you can now select any month in which that user had activity.
+	.row.stats-header
+		.col-md-12.col-sm-12.col-xs-12 alpha 0.9.0
+	.row.stats-header.secondary
+		.col-md-12.col-sm-12.col-xs-12 released Aug 12 4:15pm MDT
+	.row
+		.col-md-12.col-sm-12.col-xs-12
+			ul.release-notes
+				li UI cleanup on registration page
+				li correct screen height issue on home screen
+				li created new instawin feature -- allows you to create a Win for something that wasn't exactly planned, but something you accomplished and want to share.
+	.row.stats-header
+		.col-md-12.col-sm-12.col-xs-12 alpha 0.8.4
+	.row.stats-header.secondary
+		.col-md-12.col-sm-12.col-xs-12 released Aug 11 4:00pm MDT
+	.row
+		.col-md-12.col-sm-12.col-xs-12
+			ul.release-notes
+				li new remember me option on login will preserve login for 90 days
+	.row.stats-header
+		.col-md-12.col-sm-12.col-xs-12 alpha 0.8.3
+	.row.stats-header.secondary
+		.col-md-12.col-sm-12.col-xs-12 released Aug 10 3:00pm MDT
+	.row
+		.col-md-12.col-sm-12.col-xs-12
+			ul.release-notes
+				li included full user win history on user state page
+				li removed points :: arbitrary, for now each item won will be 1 point`
+				li removed delegate feature :: replaced with a "relegate" option to move to save for later list (backlog)
+				li fixed bug that was hiding the list operands (W's, deleted etc) when there were no items to show
+				li fixed UI issues on more button for message board
+	.row.stats-header
+		.col-md-12.col-sm-12.col-xs-12 alpha 0.8.2
+	.row.stats-header.secondary
+		.col-md-12.col-sm-12.col-xs-12 released Aug 7 11:30am MDT
+	.row
+		.col-md-12.col-sm-12.col-xs-12
+			ul.release-notes
+				li added jump off links to team page to view individual user stats / history
+				li fixed sizing issue on main screen resulting in window scroll
+				li fixed link layout issue on login screen
+	.row.stats-header
+		.col-md-12.col-sm-12.col-xs-12 alpha 0.8.1
+	.row.stats-header.secondary
+		.col-md-12.col-sm-12.col-xs-12 released Aug 7 9:30am MDT
+	.row
+		.col-md-12.col-sm-12.col-xs-12
+			ul.release-notes
+				li new user stat screen, viewable from the leaderboard links
+				li filtering option on account pulse stream
+				li fixed bug that was causing read/unread message count to be incorrect
+				li added JS check to ensure empty messages cannot be added
+				li cleaned up login UI / layout
+				li added browser tool tips to ALL links for browser users
+				li fixed "invalid date" appearing for expiration date on team screen
+				li added version number to login screen
+				li added release notes to release version link on login

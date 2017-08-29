@@ -1,0 +1,18 @@
+#todoControls.clearfix.p20r
+	.pull-right.clearfix
+		.hidden-xs.meta.pull-left.p5t.m5r(data-overlay="step-three", data-overlay-position="left")
+			| Filter by 
+		.select-wrapper.pull-left.clearfix.m5r
+			select#dateRangeType.date-pickers.pull-left
+				//- option(value="", selected) Touched
+				option(value="createdOn") Created
+				option(value="dateDue") Expires
+			.icon.pull-right
+				.ion-chevron-down
+		.select-wrapper.pull-left.clearfix
+			select#dateRange.date-pickers.pull-left
+				option(value="", selected) This Year
+				option(value="month") This Month
+				option(value="today") Today
+			.icon.pull-right
+				.ion-chevron-down

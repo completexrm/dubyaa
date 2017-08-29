@@ -1,0 +1,23 @@
+extends ../layout
+
+append body
+	script(src='/js/controllers/ideacloud.js')
+
+block header
+	include ../partials/header
+
+block content
+	#content
+		#ideaCloud
+			#appData(data-is-admin="#{session.dubyaaUser.user.isAccountAdmin}", data-has-teams="#{session.dubyaaUser.user.hasTeams}", data-acctid="#{session.dubyaaUser.user.accountId}", data-userid="#{session.dubyaaUser.user.id}")
+			.row.stats-header
+				.col-lg-12.col-md-12.col-sm-12.col-xs-12
+					| ideas floating in the cloud
+			#ideaList
+				#loader.row
+					.col-lg-12.col-md-12.col-sm-12.col-xs-12
+						include ../partials/loader
+			include ../partials/modals/newIdea
+
+			block footer
+				include ../partials/footer

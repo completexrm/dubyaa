@@ -1,0 +1,28 @@
+extends ../layout
+
+append body
+	script(src='/js/controllers/account.js')
+
+block header
+	include ../partials/header
+
+block content
+	#content
+		#account
+			#appData(data-userid="#{session.dubyaaUser.user.id}", data-accountid="#{session.dubyaaUser.account.id}")
+			.row.stats-header
+				.col-md-12.col-sm-12.col-xs-12
+					| manage account
+			.row
+				.col-md-12.col-sm-12.col-xs-12
+					if(viewType === 'suspendedUser')
+						include suspendedUser
+					else if(viewType==='suspendedAdmin')
+						include suspendedAdmin
+					else
+						include accountInfo
+					include ../partials/modals/user
+					include ../partials/modals/team
+					include ../partials/modals/level
+		block footer
+			include ../partials/footer

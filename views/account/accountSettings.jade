@@ -1,0 +1,21 @@
+.row.account-section
+	.col-md-3.col-sm-3.section-name
+		p Application Settings
+	#accountSettings.col-md-9.col-sm-9.section-body
+		table.table.border-none
+			tr
+				td 
+					span.ion-ios-alarm.p10r
+					| Multiplier for Things Done Prior to Expiration
+					.meta.block If no expiration date is set, no action will be taken
+				td
+					input.form-control(type="text", value="#{session.dubyaaUser.account.prefs.dubyaaMultiplier}")
+			tr
+				td
+					div 
+						span.ion-ios-settings.p10r
+						| Maximum allowed unfinished items
+					- if(Number(session.dubyaaUser.account.isTrial)===1)
+						.meta Trial accounts are currently allowed only 3 open items
+				td
+					input.form-control(type="text", value="#{session.dubyaaUser.account.prefs.maxOpen}", disabled=Number(session.dubyaaUser.account.isTrial)===1)

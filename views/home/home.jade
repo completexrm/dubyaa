@@ -1,0 +1,99 @@
+extends ../layout
+
+append body
+	script(src='/js/controllers/home.js')
+
+block header
+	include ../partials/header
+
+block content
+	#content
+		#home.row
+			#appData(data-canenter="true", data-has-teams="#{session.dubyaaUser.user.hasTeams}", data-is-mobile="#{session.dataPlatform.uaMobile}", data-display-name="#{session.dubyaaUser.user.displayName}", data-first-name="#{session.dubyaaUser.user.firstName}", data-last-name="#{session.dubyaaUser.user.lastName}", data-multiplier="#{session.dubyaaUser.account.prefs.dubyaaMultiplier}", data-maxopen="#{session.dubyaaUser.account.prefs.maxOpen}", data-acctid="#{session.dubyaaUser.user.accountId}", data-userid="#{session.dubyaaUser.user.id}", data-si="#{si}", data-firstlogin="#{session.dubyaaUser.user.isFirstLogin}", data-app-hints="#{session.dubyaaUser.prefs.appHints}", data-tz-offset="#{parseInt(session.dubyaaUser.prefs.tzOffset*60, 10)}")
+			#homeLeft.col-md-12.col-md-12.col-sm-12.col-xs-12
+				#homeLeftTop
+					.row.stats-header
+						.col-lg-12.col-md-12.col-sm-12.col-xs-12
+							| my dubyaas
+					- if(Number(session.dubyaaUser.prefs.appHints)===1)
+						include ../partials/help/helpHome
+					//- .row.stats-header.secondary
+						.col-lg-12.col-md-12.col-sm-12.col-xs-12
+							| currently on your plate
+					#homeHeader.row
+						.home-buttons.clearfix
+							.col-md-6.col-sm-6.col-xs-3.align-left
+								- if(Number(session.dataPlatform.uaMobile)===0)
+									a#newTodo.btn.btn-primary.btn-big.new-todo(data-toggle="tooltip", data-placement="bottom", title="New Item", data-overlay="step-two", data-overlay-position="right")
+										i.fa.fa-plus.hidden-lg.hidden-md.hidden-sm
+								- else
+									a#newTodo.btn.btn-primary.btn-big.new-todo(title="New item", data-overlay="step-two", data-overlay-position="right")
+										i.fa.fa-plus
+									a#newInstaWin.m5l.btn.btn-warning.btn-big.new-instawin(title="New Insta-Win!", data-toggle="modal", href="#newInstawin")
+										i.fa.fa-bolt
+								- if(Number(session.dataPlatform.uaMobile)===0)
+									a.show-tags.btn-tag.btn.btn-big.m10l(title="Show tags")
+										i.fa.fa-tag.hidden-lg.hidden-md.hidden-sm
+										span.hidden-xs View All Tags
+									a.hide-tags.btn.btn-tag.hide.btn-big.m10l(title="Hide tags")
+										span.hidden-xs Hide Tags
+							.col-md-6.col-sm-6.col-xs-9.align-right
+								a#viewDubyaas.dubyaa-filter.btn.btn-success.btn-big(title="My past Dubyaas")
+									| W's
+								//- a#viewDelegated.dubyaa-filter.btn.btn-warning.btn-big.m5l(title="Items forwarded to me")
+									.fa.fa-mail-forward
+								a#viewDeleted.dubyaa-filter.btn.btn-danger.btn-big.m5l(title="Archived items")
+									.fa.fa-archive
+					//- #homeButtons.row
+						.col-md-12
+							include ../partials/todoControls
+					- if(Number(session.dataPlatform.uaMobile)===0)
+						#homeList.m10t.m20l.m20r.relative
+							include ../partials/todoCover
+							include ../partials/noTodo
+							include ../partials/todoLoading
+							#todos
+					- else
+						#homeList.relative
+							include ../partials/todoCover
+							include ../partials/noTodo
+							include ../partials/noTodoDubyaaDeleted
+							include ../partials/todoLoading
+							#todos
+					.row.stats-header.secondary.toggle-backlog.align-left
+						.col-lg-12.col-md-12.col-sm-12.col-xs-12
+							.clearfix 
+								.pull-left.w50
+									.p10l save these for later...
+								.pull-right.align-right.w50
+									.p10r 
+										span.toggle-direction.fa.fa-chevron-down.hide
+										span.toggle-direction.fa.fa-chevron-up
+					.backlog-list
+						.row
+							.home-buttons.clearfix
+								.col-lg-2.col-md-2.col-sm-2.col-xs-2.align-left
+									a.new-backlog.btn.btn-default.bold(title="New item for later")
+										span.fa.fa-plus
+								.col-lg-10.col-md-10.col-sm-10.col-xs-10.align-right
+									a.btn.btn-primary(href="#backlogHelp", data-toggle="modal", title="What is 'Save for Later'?")
+										span.fa.fa-question
+						include ../partials/noBacklog
+						.row#backlog
+							.col-lg-12.col-md-12.col-sm-12.col-xs-12
+								#list
+									#loader
+										include ../partials/loader
+
+			//- #homeRight.col-md-2.col-md-2.col-sm-3.hidden-xs
+				.row.column
+					.col-md-12.col-sm-12
+						//- include rightScore
+						//- include rightPoints
+						include rightActivity
+			include ../partials/modals/onboard
+			include ../partials/modals/newInstawin
+			include ../partials/modals/delegate
+			include ../partials/modals/backlogHelp
+		block footer
+			include ../partials/footer

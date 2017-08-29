@@ -1,0 +1,20 @@
+#accountCreate.row.hide.signup-step(data-step="2b")
+	.row.stats-header
+		.col-md-12.col-sm-12.col-xs-12
+			| new account
+	.row
+		.col-md-12
+			.p10
+				#profile
+					p
+						label.p10b For example..."Jane's wild world of productivity!"
+						input#newAccountName.form-control(placeholder="Enter your desired Account name...")
+				.operands.clearfix
+					.pull-left
+						a.go-login(href="/login") Goto Login
+					.pull-right
+						a.go-back.btn.btn-warning.m5r(data-step="1")
+							span.fa.fa-chevron-left
+						a.go-team.btn.btn-success(data-from="create")
+							| Teams
+							span.p5l.fa.fa-chevron-right

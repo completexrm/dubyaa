@@ -1,0 +1,54 @@
+@import "main";
+
+.nav {
+  &.bottom {
+    background: @flatBrown;
+    ul {
+      width:100%;
+      display: block;
+      li {
+        width: 25%;
+        a {
+          padding: 0;
+          display: block;
+          color: rgba(255, 255, 255, 0.70);
+          &:hover {
+            color: rgba(255, 255, 255, 1.0);
+          }
+        }
+        &.active {
+          a {
+            background: white;
+            color: @flatBrown;
+          }
+        }
+      }
+    }
+  }
+  ul {
+    li {
+      display: inline-block;
+      a {
+        background: none;
+        .tx;
+        color: rgba(0, 0, 0, 0.25);
+        font-size: 19pt;
+        text-align: center;
+        display: block;
+        padding: 0 10px;
+        &:hover {
+          color: rgba(0,0,0,0.70);
+        }
+      }
+      &.active {
+        a {
+          background: @flatBrown;
+          color: white;
+        }
+      }
+    }
+    > li:first-child {
+      
+    }
+  }
+}

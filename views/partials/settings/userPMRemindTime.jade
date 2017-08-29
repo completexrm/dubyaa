@@ -1,0 +1,31 @@
+label PM Reminder Time
+select#onboardPMRemindTime.form-control
+	- if(profile.prefs.pmRemindTime==='16:00:00')
+		option(value="16:00:00" selected) 4 pm
+	- else
+		option(value="16:00:00") 4 pm
+	
+	- if(profile.prefs.pmRemindTime==='17:00:00')
+		option(value="17:00:00" selected) 5 pm
+	- else
+		option(value="17:00:00") 5 pm
+
+	- if(profile.prefs.pmRemindTime==='18:00:00')
+		option(value="18:00:00" selected) 6 pm
+	- else
+		option(value="18:00:00") 6 pm
+
+	- if(profile.prefs.pmRemindTime==='19:00:00')
+		option(value="19:00:00" selected) 7 pm
+	- else
+		option(value="19:00:00") 7 pm
+
+	- if(profile.prefs.pmRemindTime==='20:00:00')
+		option(value="20:00:00" selected) 8 pm
+	- else
+		option(value="20:00:00") 8 pm
+
+	- if(profile.prefs.pmRemindTime==='21:00:00')
+		option(value="21:00:00" selected) 9 pm
+	- else
+		option(value="21:00:00") 9 pm

@@ -1,0 +1,22 @@
+#modalNewLevel(data-acctid="#{session.dubyaaUser.user.accountId}", data-userid="#{session.dubyaaUser.user.id}")
+	#newLevel.modal.fade
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type="button", data-dismiss="modal", aria-label="Close")
+						span(aria-hidden="true") &times;
+					h4.modal-title Create New Level
+				.modal-body
+					.w100
+						label Level Name
+						input#label.form-control.required
+					.clearfix.m10t
+						.w50.pull-left
+							label Low Value
+							input#valueLo.form-control.required(type="number")
+						.w50.pull-left
+							label High Value
+							input#valueHi.form-control.required(type="number")
+				.modal-footer
+					button.btn.btn-default(type="button", data-dismiss="modal") Close
+					button#saveLevel.btn.btn-primary(type="button") Create Level

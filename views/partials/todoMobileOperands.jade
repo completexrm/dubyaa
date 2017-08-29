@@ -1,0 +1,56 @@
+- if(Number(todo.isDeleted)===0 || typeof todo.isDeleted === 'undefined')
+	- var pts = (Number(todo.pointsAwarded)>0) ? todo.pointsAwarded : '--';
+	- var ptsTag = (Number(todo.pointsAwarded)===1) ? '' : 's';
+	.col-lg-6.col-md-6.col-sm-6.col-xs-6
+		- if(Number(todo.isDubyaa)===0 || typeof todo.isDubyaa === 'undefined' || todo.isNew===true)
+			.clearfix
+				- var dubyaaBtnClass = (todo.id > 0) ? '' : 'hide';
+				.post-save-show.pull-left.m5r(class="#{dubyaaBtnClass}")
+					a(class="dubyaa #{(todo.isDubyaa==='1') ? 'dubyaa-won' : 'dubyaa-notwon'}", title="Mark as a Dubyaa!")
+						img(src="/images/w-logo.png", width="28", style="opacity:0.7")
+				.pull-left.hide
+					- if(Number(todo.delegatorId)===0 || todo.isNew===true)
+						select.points-mobile.form-control
+							- if(Number(todo.points)===5)
+								option(value="5") 5
+							- else
+								option(value="5") 5
+							
+							- if(Number(todo.points)===3)
+								option(value="3") 3
+							- else
+								option(value="3") 3
+							
+							- if(Number(todo.points)===1)
+								option(value="1", selected) 1
+							- else
+								option(value="1", selected) 1
+
+							- if(Number(todo.points)===0)
+								option(value="0") 0
+							- else
+								option(value="0") 0
+					- else
+						.meta.bold #{pts} pt#{ptsTag}
+		- else
+			.clearfix.meta
+				- var totalGood = (Number(todo.reactions.totalGood) > 0) ? todo.reactions.totalGood : 0;
+				- var totalGoodTag = (Number(todo.reactions.totalGood) === 1) ? '' : 's';
+				- var totalBad = (Number(todo.reactions.totalBad) > 0) ? leader.todo.totalBad : 0;
+				- var totalBadTag = (Number(todo.reactions.totalBad) === 1) ? '' : 's';
+				.pull-left(title="#{totalGood} Kudo#{totalGoodTag} for this period")
+					span.fa.fa-thumbs-up
+					span.p5l #{totalGood}
+				.pull-left.m10l(title="#{totalBad} Boo#{totalBadTag} for this period")
+					span.fa.fa-thumbs-down
+					span.p5l #{totalBad}
+			//- - var pts = (Number(todo.pointsAwarded)>0) ? todo.pointsAwarded : '--';
+			//- - var ptsTag = (Number(todo.pointsAwarded)===1) ? '' : 's';
+			//- - var ptsBonus = (Number(todo.points) < Number(todo.pointsAwarded)) ? '(Bonus points!)' : '';
+			//- .meta #{pts} pt#{ptsTag} awarded #{ptsBonus}
+	.col-lg-6.col-md-6.col-sm-6.col-xs-6.align-right
+		include todoDueDate
+- else
+	.col-lg-12.col-md-12.col-sm-12.col-xs-12.align-right
+		include todoDueDate
+

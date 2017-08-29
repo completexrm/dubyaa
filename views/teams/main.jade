@@ -1,0 +1,26 @@
+extends ../layout
+
+append body
+	script(src='/js/controllers/teams.js')
+
+block header
+	include ../partials/header
+
+block content
+	#content
+		#teams
+			#appData(data-is-admin="#{session.dubyaaUser.user.isAccountAdmin}", data-has-teams="#{session.dubyaaUser.user.hasTeams}", data-acctid="#{session.dubyaaUser.user.accountId}", data-userid="#{session.dubyaaUser.user.id}")
+			.row.stats-header
+				.col-lg-12.col-md-12.col-sm-12.col-xs-12
+					| todays activity across the teams
+			- if(Number(session.dubyaaUser.prefs.appHints)===1)
+				include ../partials/help/helpTeams
+			#teamsList
+				#loader.row
+					.col-lg-12.col-md-12.col-sm-12.col-xs-12
+						include ../partials/loader
+			include ../partials/modals/newSuggestion
+			include ../partials/modals/newReward
+
+			block footer
+				include ../partials/footer

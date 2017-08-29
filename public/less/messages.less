@@ -1,0 +1,37 @@
+@import 'main';
+#messages {
+	a {
+		&#post {
+			height: 60px;
+			line-height: 50px;
+			display: block;
+			width: 100%;
+			border-radius: 0;
+		}
+		&.do-reply, &.do-cancel {
+			height: 25px;
+			line-height: 13px;	
+			display: block;
+			width: 100%;
+			border-radius: 0;
+			font-weight: 300;
+		}
+	}
+	textarea {
+		display: block;
+		height: 60px;
+		resize: none;
+		border-radius: 0;
+		&.response {
+			font-size: 8pt;
+			height: 50px;
+		}
+	}
+	.message-tools-container {
+		background: #eee;
+		padding-right: 10px;
+	}
+	.response {
+		border-left: 4px solid @flatYellow;
+	}
+}

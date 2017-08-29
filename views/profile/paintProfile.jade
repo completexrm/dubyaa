@@ -1,0 +1,82 @@
+#general
+	.row.stats-header.secondary
+		.col-md-12.col-sm-12.col-xs-12
+			| general
+	.account-section.p10b
+		.row
+			.col-lg-12.col-md-12.col-sm-12.col-xs-12
+				- var formHideClass = (profile.photoPath==='') ? '' : 'hide';
+				- var imgHideClass = (profile.photoPath==='') ? 'hide' : '';
+				- var urlFile = (profile.photoPath==='') ? '' : profile.photoPath;
+				- var url = (profile.photoPath==='') ? '' : '/uploads/' + urlFile;
+				.align-center.m10b
+					label YOUR DUBYAA PORTAIT
+				form#uploadProfilePhoto(action="/profile/uploadFile", method="post", enctype="multipart/form-data", class="#{formHideClass}")
+					input(type="hidden", name="userId", value="#{user.id}")
+					input.btn.btn-warning.w100(type="file", name="profilePhoto")
+					button.btn.btn-primary.w100(type="submit", value="Upload") Upload
+				.profile-photo(class="#{imgHideClass}")
+					div(style="width: 20%; margin:0 auto; text-align:center")
+						img#profilePhoto.block(data-path="#{urlFile}", src="#{url}", style="width:100%;")
+					a.delete-photo.btn.btn-danger.w100.m10t Change Profile Photo
+		.row.p10t
+			.col-lg-12.col-md-12.col-sm-12.col-xs-12
+				.p10l.p10r
+					label Display Name
+					input#displayName.form-control(value="#{profile.displayName}")
+					.row
+						.col-lg-6.col-md-6.col-sm-6.col-xs-6
+							.p5r
+								label First Name
+								input#firstName.form-control(value="#{profile.firstName}")
+						.col-lg-6.col-md-6.col-sm-6.col-xs-6
+							.p5r
+								label Last Name
+								input#lastName.form-control(value="#{profile.lastName}")
+		.row.p10t
+			.col-md-12.col-sm-12.col-xs-12
+				.p10l.p10r
+					label Tag Line
+					input#tagLine.form-control(value="#{profile.tagLine}")
+					.meta.block.small
+						| A quote or phrase that keeps you ticking...i.e..."Carpe Diem!"
+		.row.p10t
+			include ../partials/settings/userMobileSettings
+		.row.p10t
+			include ../partials/settings/userTimezone
+#login
+	.row.stats-header.secondary
+		.col-md-12.col-sm-12.col-xs-12
+			| security
+	.row.account-section
+		.col-md-12.col-sm-12.col-xs-12.section-body
+			.section-detail
+				label Username
+				.m5t.m10b.p10b.border-bottom #{profile.emailAddress}
+				label
+					| Password
+					span.pw-hint.p5l.hide (at least 5 characters)
+				#pwDisplay.bold
+					span.meta.p10r ********
+					a.do-pw-change.font-xs Change
+				#pwChange.clearfix.w100.hide
+					.pull-left.w50
+						.m5r
+							input#pw1.form-control(value="", type="password", placeholder="New password")
+					.pull-left.w50
+						.m5l
+							input#pw2.form-control(value="", type="password", placeholder="Confirm...")
+#settings
+	.row.stats-header.secondary
+		.col-md-12.col-sm-12.col-xs-12
+			| settings & preferences
+	.row.account-section
+		.col-md-12.col-sm-12.col-xs-12.section-body
+			.section-detail
+				include ../partials/settings/userAppHints
+			.section-detail
+				include ../partials/settings/userDailyReminders
+			.section-detail.remind-time-section
+				include ../partials/settings/userAMRemindTime
+			.section-detail.remind-time-section
+				include ../partials/settings/userPMRemindTime

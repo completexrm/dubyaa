@@ -1,0 +1,13 @@
+.row.account-section
+	.col-md-3.col-sm-3.section-name
+		.clearfix
+			.pull-left
+				p Core Values
+			.pull-right
+				.p10t.p20r
+					a.btn.btn-success.btn-sm(href="#newValue", data-toggle="modal") New
+	.col-md-9.col-sm-9.section-body
+		.m10t
+			include ../partials/noValues
+			#accountValueList
+				include ../partials/loader

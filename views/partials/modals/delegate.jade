@@ -1,0 +1,21 @@
+#modalTodoDelegate(data-acctid="#{session.dubyaaUser.user.accountId}", data-userid="#{session.dubyaaUser.user.id}")
+	#todoDelegate.modal.fade
+		input#todoId(type="hidden", value="")
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type="button", data-dismiss="modal", aria-label="Close")
+						span(aria-hidden="true") &times;
+					h4.modal-title
+						span.fa.fa-mail-forward.p5r
+						| Delegate Item
+				.modal-body
+					label Select User
+					select#userId.form-control
+						option(value="") Recipient...
+				.modal-footer
+					.clearfix
+						.pull-right.m5l
+							button#doDelegate.btn.btn-success(type="button") delegate!
+						.pull-right
+							button.btn.btn-default(type="button", data-dismiss="modal") Close

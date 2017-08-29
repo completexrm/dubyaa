@@ -1,0 +1,10 @@
+label Application Help, Tips & Hints?
+select#appHints.form-control
+	- if(Number(profile.prefs.appHints)===1)
+		option(value="1" selected) Yes, please!
+	- else
+		option(value="1") Yes, please!
+	- if(Number(profile.prefs.appHints)===0)
+		option(value="0" selected) No thanks
+	- else
+		option(value="0") No thanks

@@ -1,0 +1,42 @@
+.suggestion
+	.row.border-bottom.p10.border-dashed
+		.col-md-11.col-sm-11.col-xs-11
+			- var readClass = (Number(suggestion.isRead)===0) ? 'bold' : '';
+			span.suggestion-label(class="#{readClass}") #{suggestion.suggestion}
+			//- .block.meta.small referring to your item 
+				span.bold "#{suggestion.label}"
+		.col-md-1.col-sm-1.col-xs-1.align-right
+			.suggestion-operands.btn-group.btn-group-sm.relative
+				a.btn.btn-primary.dropdown-toggle(data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+					span.fa.fa-cog.p5r
+					span.caret
+				ul.dropdown-menu
+					li
+						a.mark-backlog(data-id="#{suggestion.id}", data-label="#{suggestion.suggestion}")
+							span.ion-ios-redo.p10r
+							| Save for Later
+					- if(Number(suggestion.isRead)===1)
+						li
+							a.mark-read.hide(data-id="#{suggestion.id}")
+								span.ion-eye.p10r
+								| Mark as read
+						li
+							a.mark-unread(data-id="#{suggestion.id}")
+								span.ion-eye-disabled.p10r
+								| Mark as unread
+					- else
+						li
+							a.mark-read(data-id="#{suggestion.id}")
+								span.ion-eye.p10r
+								| Mark as read
+						li
+							a.mark-unread.hide(data-id="#{suggestion.id}")
+								span.ion-eye-disabled.p10r
+								| Mark as unread
+					li
+						a.mark-delete(data-id="#{suggestion.id}")
+							span.fa.fa-archive.p10r
+							| Dismiss
+	.row.p5t.p5b.p10l.p10r
+		.col-md-12.col-sm-12.col-xs-12
+			.meta.small You sent this on #{moment(suggestion.createdOn).format('MMM Do [at] hh:mma')}

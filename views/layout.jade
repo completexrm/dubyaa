@@ -1,0 +1,37 @@
+doctype html
+html
+	head
+		title #{globalPageTitle}#{pageTitle}
+		
+		meta(name="viewport", content="width=device-width, user-scalable=no, initial-scale=1.0, minimal-ui")
+		meta(name="apple-mobile-web-app-capable", content="yes")
+		link(rel="apple-touch-icon", href="/images/apple-touch-icon.png")
+
+		block css
+		link(rel='stylesheet', href='/libs/bootstrap/dist/css/bootstrap.min.css')
+		link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700')
+		link(rel='stylesheet', href='/libs/fontawesome/css/font-awesome.min.css')
+		link(rel='stylesheet', href='/libs/ionicons/css/ionicons.min.css')
+		link(rel='stylesheet', href='/libs/jqueryui/themes/base/all.css')
+		link(rel='stylesheet', href='/css/main.css')
+		link(rel='stylesheet', href='/css/timepicker.css')
+		link(rel='stylesheet', href='/css/nav.css')
+		link(rel='stylesheet', href='/css/todo.css')
+		link(rel='stylesheet', href='/css/signup.css')
+		link(rel='stylesheet', href='/css/account.css')
+		link(rel='stylesheet', href='/css/messages.css')
+		link(rel='stylesheet', href='/css/overlay.css')
+
+		block js
+		script(src='/libs/justgage/raphael.min.js')
+		script(src='/libs/justgage/justgage.js')
+		script(src='/js/main.js')
+		script(src='/libs/requirejs/require.js')
+
+	body(class="#{isLoginClass}", data-wsurl="#{wsURL}", data-overlay="step-five", data-overlay-position="center")
+		block body
+			block header
+			block content
+				block footer
+			include partials/headerBottom
+			include partials/modals/setGoal

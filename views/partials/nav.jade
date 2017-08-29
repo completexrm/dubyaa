@@ -1,0 +1,11 @@
+#nav.nav
+	ul
+		- if(navGoBack===true)
+			li
+				a(href="#{goBackURL}", title="Go back")
+					.ion-ios-arrow-back
+		- else
+			li(class="#{activeNav==='home' ? 'active' : ''}")
+				a(href="/home", title="Home - Your W's")
+					//- .ion-ios-home
+					img(width="30", src="/images/w-logo.png")

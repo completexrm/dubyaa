@@ -1,0 +1,69 @@
+- var textWon = 'DUBYAAA!', textOpen = 'dubyaa?', updateDate;
+- if(todo.updatedOn !=='' && Number(todo.isDeleted)===0)
+	- updateDate = 'Saved ' + moment(todo.updatedOn).format('MMMM Do YYYY, h:mm:ss a');
+- else if(Number(todo.isDeleted))
+	- updateDate = 'Deleted ' + moment(todo.updatedOn).format('MMMM Do YYYY, h:mm:ss a');
+- else
+	- updateDate = '';
+.m5t
+	.row.todo.radius.needs-id(id="todo#{todo.id}", class="#{(todo.isDubyaa==='1') ? 'is-dubyaa' : ''} #{(todo.hideDubyaa==='1') ? ' hide' : ''}", data-id="#{todo.id}")
+		#todoTools.todo-tools.col-md-1.col-xs-1
+			ul#tools.align-center
+				li.todo-edit.active
+					a(data-toggle="tooltip", data-placement="right", title="Edit", data-target="todoEditOps")
+						span.ion-edit.font-l
+				li.todo-tag
+					a(data-toggle="tooltip", data-placement="right", title="Add tags", data-target="todoTags")
+						span.ion-ios-pricetag-outline.font-l
+				li.todo-comments
+					a(data-toggle="tooltip", data-placement="right", title="What are people saying?", data-target="todoComments", data-id="#{todo.id}")
+						span.ion-ios-chatbubble-outline.font-l
+		#todoBody.todo-body.col-md-9.col-xs-9
+			.text
+				textarea(placeholder="something important to get done today....", data-current="#{todo.label}")
+					| #{todo.label}
+		#todoBtns.todo-btns.col-md-2.col-xs-2
+			.btns-container
+				.points-container
+					a#pickPoints.points.clearfix(class="#{(todo.isDubyaa==='1') ? 'won' : ''}")
+						.w25.pull-left.check.ion-ios-checkmark-outline.align-center
+						.w60.pull-left
+							span.selected-points #{(Number(todo.points) < Number(todo.pointsAwarded)) ? todo.pointsAwarded : Math.round(todo.points)} pts
+						.w15.pull-right.arrow.ion-ios-arrow-down
+					ul.points-selector.hide
+						li(class="#{(todo.points===1) ? 'selected' : ''}")
+							a.picked-points(data-points="1")
+								span.ion-ios-checkmark-empty
+								| 1 pt
+						li(class="#{(todo.points===3) ? 'selected' : ''}")
+							a.picked-points(data-points="3")
+								span.ion-ios-checkmark-empty
+								| 3 pts
+						li(class="#{(todo.points===5) ? 'selected' : ''}")
+							a.picked-points(data-points="5")
+								span.ion-ios-checkmark-empty
+								| 5 pts
+				a#clickDubyaa.dubyaa.align-center(class="dubyaa align-center #{(todo.isDubyaa==='1') ? 'dubyaa-won' : 'dubyaa-notwon'}" data-original-text="#{textOpen}", data-won-text="#{textWon}") #{(todo.isDubyaa==='1') ? textWon : textOpen}
+		#todoTags.todo-tags.hide.toggleable
+			.clearfix
+				.pull-left.w20
+					input.add-tag(placeholder="Add tag...", data-toggle="tooltip", data-placement="left", title="Press enter to save")
+				.tags.pull-left.w80.clearfix
+					- if(todo.tags && todo.tags.length > 0)
+						each tag, i in todo.tags
+							include tag
+		#todoComments.todo-tags.hide.toggleable
+			include loader
+		#todoEditOps.todo-ops.toggleable
+			- if(Number(todo.isDeleted)===1)
+				a.torch-todo(data-toggle="tooltip", title="Delete forever", data-placement="bottom")
+					span.ion-ios-trash-outline
+				a.undelete-todo(data-toggle="tooltip", title="Undelete", data-placement="bottom")
+					span.ion-ios-redo-outline
+			- else
+				a.delete-todo(data-toggle="tooltip", title="Archive", data-placement="bottom")
+					span.ion-ios-box-outline
+			span.p10l.saved-tag
+				span.date #{updateDate}
+			include todoDueDate
+			

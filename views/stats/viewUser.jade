@@ -1,0 +1,61 @@
+extends ../layout
+
+append body
+	script(src='/js/controllers/userstats.js')
+
+block header
+	include ../partials/header
+
+block content
+	#content
+		#userStats
+			#appData(data-stats-user-id="#{statsUserId}", data-is-mobile="#{session.dataPlatform.uaMobile}", data-first-name="#{session.dubyaaUser.user.firstName}", data-last-name="#{session.dubyaaUser.user.lastName}", data-multiplier="#{session.dubyaaUser.account.prefs.dubyaaMultiplier}", data-maxopen="#{session.dubyaaUser.account.prefs.maxOpen}", data-acctid="#{session.dubyaaUser.user.accountId}", data-userid="#{session.dubyaaUser.user.id}", data-si="#{si}", data-firstlogin="#{session.dubyaaUser.user.isFirstLogin}", data-app-hints="#{session.dubyaaUser.prefs.appHints}")
+			.row.stats-header
+				.col-lg-12.col-md-12.col-sm-12.col-xs-12
+					.dropdown.stat-selector
+						a.stat-tag.block(type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+							span.user-stats-display ... 
+							| &nbsp;stats for&nbsp;
+							span.user-stats-month ...
+							span.caret
+						ul#monthList.dropdown-menu(aria-labelledby="dLabel")
+							li
+								a Test
+							li
+								a Test
+			.row.stats-header.secondary
+				.col-lg-12.col-md-12.col-sm-12.col-xs-12
+					.clearfix
+						.pull-left.p10l created vs wins by day
+						.pull-right.p10r
+							span.arrow.ion-ios-arrow-up
+			.row
+				.col-lg-12.col-md-12.col-sm-12.col-xs-12
+					canvas#userCanvas.hide(height="120")
+					#loader.p10
+						include ../partials/loader
+			.row
+				.col-lg-6.col-md-6.col-sm-6.col-xs-6.font-xl.align-center.bg-flat.blue
+					.p10b
+						.meta.color-white CREATED
+						#userActivityCreated
+				.col-lg-6.col-md-6.col-sm-6.col-xs-6.font-xl.align-center.bg-flat.green
+					.p10b
+						.meta.color-white WINS
+						#userActivityWins
+			.row.stats-header.secondary
+				.col-lg-12.col-md-12.col-sm-12.col-xs-12
+					.clearfix
+						.pull-left.p10l history
+						.pull-right.p10r
+							span.arrow.ion-ios-arrow-up
+			.row
+				.col-lg-12.col-md-12.col-sm-12.col-xs-12
+					include ../partials/noUserHistory
+					#historyLoader
+						include ../partials/loader
+					#historyList.p10l.p10r
+					#historyMore
+						a.hide.btn.btn-primary.p20.block Show More
+			block footer
+				include ../partials/footer

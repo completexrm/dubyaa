@@ -1,0 +1,45 @@
+.message.border-bottom.p5b.m5b
+	.row
+		.col-lg-1.col-md-1.col-sm-1.col-xs-1
+			.m5t
+				- var url = (message.photoPath) ? '/uploads/' + message.photoPath : '/images/profile-generic.png';
+				img.block.w100(src="#{url}")
+		.col-lg-11.col-md-11.col-sm-11.col-xs-11
+			.row
+				.col-lg-12.col-md-12.col-sm-12.col-xs-12
+					.p10l
+						.meta.small
+							| #{moment(message.createdOn).format('MMMM Do')} at #{moment(message.createdOn).format('h:mma')}, #{message.firstName} #{message.lastName} said:
+						.clearfix
+							| #{message.message}
+	.row.m5t
+		.col-lg-12.col-md-12.col-sm-12.col-xs-12
+			.message-respond-container.row.hide
+				.col-lg-10.col-md-10.col-sm-10.col-xs-10
+					.p10t.p5r
+						textarea.form-control.response(placeholder="What's your response?...")
+				.col-lg-2.col-md-2.col-sm-2.col-xs-2
+					.p10t.p5l
+						a.do-reply.btn.btn-warning(data-id="#{message.id}") Send
+						a.do-cancel.btn.btn-default close
+			.message-tools-container.row
+				.col-lg-12.col-md-12.col-sm-12.col-xs-12.align-right
+					a.meta.small.message-respond(data-id="#{message.id}") Reply
+					if(userId === message.userId)
+						a.meta.small.delete-message(data-id="#{message.id}") &nbsp;&bull;&nbsp;Delete
+	-if(message.responses.length > 0)
+		each response, id in message.responses
+			.row.m5t
+				.response.m20l.p5.clearfix
+					.col-lg-1.col-md-1.col-sm-1.col-xs-1
+						- var respondUrl = (response.photoPath) ? '/uploads/' + response.photoPath : '/images/profile-generic.png';
+						img.block.w100(src="#{respondUrl}")
+					.col-lg-11.col-md-11.col-sm-11.col-xs-11
+						.p10l
+							.font-s
+								| #{response.message}
+							.meta.small
+								| #{response.firstName} #{response.lastName} replied on #{moment(response.updatedOn).format('MMMM Do')} at #{moment(response.updatedOn).format('h:mma')}
+								- if(userId === response.userId)
+									| &nbsp;&bull;&nbsp;
+									a.meta.small.delete-message.bold(data-id="#{response.id}") Delete

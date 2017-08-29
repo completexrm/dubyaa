@@ -1,0 +1,58 @@
+extends ../layout
+
+append body
+	script(src='/js/controllers/suggestions.js')
+
+block header
+	include ../partials/header
+
+block content
+	#content
+		#suggestions
+			.row.stats-header
+				.col-lg-12.col-md-12.col-sm-12.col-xs-12
+					| suggestions
+			- if(Number(session.dubyaaUser.prefs.appHints)===1)
+				include ../partials/help/helpSuggestions
+			.row
+				.col-lg-12.col-md-12.col-sm-12.col-xs-12
+					a.btn.btn-success.block(href="#newSuggestion", data-toggle="modal")
+						span.fa.fa-plus.p5r
+						| new
+			.row
+				.col-lg-12.col-md-12.col-sm-12.col-xs-12
+					ul.suggestions.nav.nav-tabs(role="tablist")
+						li.active(role="presentation")
+							a.suggestion-view.border-right(href="#suggestionsGiven", aria-controls="home", role="tab", data-toggle="tab")
+								span.fa.fa-user
+								span.meta.small.suggestions-count
+						li(role="presentation")
+							a.suggestion-view(href="#suggestionsAccount", aria-controls="home", role="tab", data-toggle="tab")
+								i.fa.fa-globe
+								span.meta.small.suggestions-account-count
+						//- li(role="presentation")
+							a.suggestion-view(href="#suggestionsSent", aria-controls="home", role="tab", data-toggle="tab")
+								i.fa.fa-paper-plane
+								span.meta.small.suggestions-sent-count
+			.row
+				#appData(data-is-mobile="#{session.dataPlatform.uaMobile}", data-first-name="#{session.dubyaaUser.user.firstName}", data-last-name="#{session.dubyaaUser.user.lastName}", data-multiplier="#{session.dubyaaUser.account.prefs.dubyaaMultiplier}", data-maxopen="#{session.dubyaaUser.account.prefs.maxOpen}", data-acctid="#{session.dubyaaUser.user.accountId}", data-userid="#{session.dubyaaUser.user.id}", data-si="#{si}", data-firstlogin="#{session.dubyaaUser.user.isFirstLogin}", data-app-hints="#{session.dubyaaUser.prefs.appHints}")
+				.col-lg-12.col-md-12.col-sm-12.col-xs-12
+					.tab-content
+						#suggestionsGiven.tab-pane.active(role="tabpanel")
+							include ../partials/noSuggestions
+							#list
+								#loader
+									include ../partials/loader
+						#suggestionsAccount.tab-pane(role="tabpanel")
+							include ../partials/noSuggestionsAccount
+							#listAccount
+								#loader
+									include ../partials/loader
+						//- #suggestionsSent.tab-pane(role="tabpanel")
+							include ../partials/noSuggestionsSent
+							#listSent
+								#loader
+									include ../partials/loader
+			include ../partials/modals/newSuggestion
+			block footer
+				include ../partials/footer

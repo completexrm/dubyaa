@@ -1,0 +1,22 @@
+- var noGoalYTDClass = (year.goal > 0) ? 'hide' : '';
+- var noGoalYTDBarClass = (!year.goal || year.goal === 0) ? 'hide' : '';
+
+- if(Number(year.pts)===0)
+	include noPoints
+- else
+	- var yClass = (Number(year.percent) < 20) ? 'danger' : (Number(year.percent) < 75) ? 'warning' : 'success';
+	.mtd 
+		.no-goal.border-bottom.p10.alert-danger(class="#{noGoalYTDClass}")
+			.clearfix
+				.pull-left.p5r
+					span.ion-sad-outline.icon.font-xl
+				.pull-left
+					.bold You don't have a Q#{moment().year()} #{moment().format('YYYY')} goal
+					.meta
+						a.manage-goals Create one now 
+						| to see your points!
+		.clearfix(class="#{noGoalYTDBarClass}")
+			h5.progress-label.pull-left #{moment().format('YYYY')}
+			.meta.pull-right #{year.percent}%
+		.progress(class="#{noGoalYTDBarClass}")
+			.progress-bar.progress-bar-striped.tx(class="progress-bar-#{yClass}", role="progressbar", aria-valuenow="#{year.percent}", aria-valuemin="0", aria-valuemax="100", style="width: #{year.percent}%;")

@@ -1,0 +1,34 @@
+each todo, id in todos.todos
+	.item.m20l(data-id="#{todo.id}")
+		.row.border-bottom.border-dashed
+			.col-lg-12.col-md-12.col-sm-12.col-xs-12
+				.clearfix.p5t.p5b
+					- if(Number(todo.isDubyaa)===1)
+						.pull-left
+							.m5r
+								img(width="24", style="opacity:0.7", src="/images/w-logo.png")
+						.pull-left.font-s.w80 #{todo.label}
+					- else
+						.font-s.p5t #{todo.label}
+		.row.border-bottom
+			//- .col-lg-8.col-md-8.col-sm-8.col-xs-8
+			.col-lg-12.col-md-12.col-sm-12.col-xs-12
+				.date.p5t.p5b.meta.small
+					- if(Number(todo.isDubyaa)===1)
+						| Won on #{moment(todo.dubyaaDate).format('MMM D')}
+					- else
+						| Updated on #{moment(todo.updatedOn).format('MMM D')}
+			.col-lg-4.col-md-4.col-sm-4.col-xs-4
+				//- .clearfix
+					.pull-left.w33
+						- var thumbsUpClass = (Number(todo.reaction.isGood)===1) ? 'success' : 'default';
+						a.btn.low.block.react(class="btn-#{thumbsUpClass}")
+							span.fa.fa-thumbs-up
+					.pull-left.w33
+						- var disputeClass = (Number(todo.reaction.isDispute)===1) ? 'warning' : 'default';
+						a.btn.low.block.react(class="btn-#{disputeClass}")
+							span.fa.fa-warning
+					.pull-left.w33
+						- var thumbsDownClass = (Number(todo.reaction.isBad)===1) ? 'danger' : 'default';
+						a.btn.low.block.react(class="btn-#{thumbsDownClass}")
+							span.fa.fa-thumbs-down

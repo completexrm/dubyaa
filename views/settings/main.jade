@@ -1,0 +1,27 @@
+extends ../layoutApp
+
+append body
+	script(src='/js/controllers/settings.js')
+
+block content
+	#settings.container
+		#appData(data-userid="#{session.dubyaaUser.user.id}")
+		.page-header
+			h1
+				i.fa.fa-cog.m5r
+				| Settings
+		ul.nav.nav-tabs(role="tabllist")
+			li.active(role="presentation")
+				a(href="#profile", role="tab", data-toggle="tab")
+					i.fa.fa-user.m5r
+					| Your Profile
+			li(role="presentation")
+				a(href="#accountAdmin", role="tab", data-toggle="tab")
+					i.fa.fa-users.m5r
+					| Account Administration
+		.tab-content
+			#profile.tab-pane.active(role="tabpanel")
+				.loading
+					i.fa.fa-spin.fa-spinner
+				include ../partials/settingsProfile
+			#accountAdmin.tab-pane(role="tabpanel") Account Admin

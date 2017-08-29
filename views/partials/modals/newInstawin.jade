@@ -1,0 +1,17 @@
+#modalNewInstawin(data-acctid="#{session.dubyaaUser.user.accountId}", data-userid="#{session.dubyaaUser.user.id}")
+	#newInstawin.modal.fade
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type="button", data-dismiss="modal", aria-label="Close")
+						span(aria-hidden="true") &times;
+					h4.modal-title
+						span.fa.fa-bolt.m5r
+						| New Insta-Win!
+				.modal-body.clearfix
+					.meta.small.m10b.p10b.border-bottom
+						| InstaWin's are activities and accomplishments you get done throughout the day, but didn't necessarily plan for them.  Once entered these little gems will show up instantly in the Account Pulse and visible to everyone else!
+					textarea#instawin.form-control.required(placeholder="Describe your Insta-Win...")
+				.modal-footer
+					button.btn.btn-default(type="button", data-dismiss="modal") Close
+					button#saveInstawin.btn.btn-instawin(type="button") Save Your Insta-Win!

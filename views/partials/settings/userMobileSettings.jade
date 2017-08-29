@@ -1,0 +1,25 @@
+.col-lg-6.col-md-6.col-sm-6.col-xs-6
+	.p10l.p5r
+		label Mobile #
+		input#mobileNumber.form-control(value="#{profile.mobileNumber}")
+.col-lg-6.col-md-6.col-sm-6.col-xs-6
+	.p5l.p10r
+		label Carrier
+		select#mobileCarrierSMS.form-control
+			option(value="") Select Carrier...
+			- if(profile.mobileCarrierSMS==='txt.att.net')
+				option(value="txt.att.net" selected) AT&T
+			- else
+				option(value="txt.att.net") AT&T
+			- if(profile.mobileCarrierSMS==='messaging.sprintpcs.com')
+				option(value="messaging.sprintpcs.com" selected) T-Mobile
+			- else
+				option(value="messaging.sprintpcs.com") T-Mobile
+			- if(profile.mobileCarrierSMS==='tmomail.net')
+				option(value="tmomail.net" selected) Sprint
+			- else
+				option(value="tmomail.net") Sprint
+			- if(profile.mobileCarrierSMS==='vtext.com')
+				option(value="vtext.com" selected) Verizon
+			- else
+				option(value="vtext.com") Verizon

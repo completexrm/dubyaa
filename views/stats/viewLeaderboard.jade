@@ -1,0 +1,73 @@
+each leader, id in leaderboard
+	.leader.border-bottom
+		.row
+			.col-lg-1.col-md-1.col-sm-1.col-xs-1
+				- var bgColorGold = (Number(id)===1) ? 'gold' : '';
+				- var bgColorSilver = (Number(id)===2) ? 'silver' : '';
+				- var bgColorBronze = (Number(id)===3) ? 'bronze' : '';
+				.leaderboard.ranking(class="#{bgColorGold} #{bgColorSilver} #{bgColorBronze}")
+					- if(Number(id) <= 3)
+						span.ion-trophy
+					- else
+						| #{id}
+			.col-lg-2.col-md-2.col-sm-2.col-xs-2
+				- var url = (leader.photoPath) ? '/uploads/' + leader.photoPath : '/images/profile-generic.png';
+				div(style="border-radius: 30px; display:block;width:60px; height:60px; background: url('#{url}') center no-repeat; background-size: 100%")
+				//- img.block.w100(src="#{url}", style="max-width: 60px;")
+			.col-lg-9.col-md-9.col-sm-9.col-xs-9
+				.row.p5.border-bottom.border-dashed
+					.col-md-6.col-sm-6.col-xs-6
+						a(href="/stats/#{leader.id}", title="#{leader.displayName}'s Comprehensive Stats")
+							span.display-name.p5l #{leader.displayName}
+					.col-md-6.col-sm-6.col-xs-6.align-right
+						- var pts = parseInt(leader.monthWins, 10);
+						span.badge #{leader.level}
+						a.font-l.m5l(href="/stats/#{leader.id}", title="#{leader.displayName}'s Comprehensive Stats")
+							span.pts #{pts}
+						img.m5l(src="/images/w-logo.png", width="16", style="position:relative; top:-3px;")
+				.row.p5
+					.col-lg-12.col-md-12.col-sm-12.col-xs-12
+						.tagline
+							- if(leader.tagLine)
+								| "#{leader.tagLine}"
+							- else
+								em No tagline
+					//- .col-md-3.col-sm-3.col-xs-3.align-right
+						.clearfix.meta
+							- var totalGood = (Number(leader.reactions.totalGood) > 0) ? leader.reactions.totalGood : 0;
+							- var totalGoodTag = (Number(leader.reactions.totalGood) === 1) ? '' : 's';
+							- var totalBad = (Number(leader.reactions.totalBad) > 0) ? leader.reactions.totalBad : 0;
+							- var totalBadTag = (Number(leader.reactions.totalBad) === 1) ? '' : 's';
+							.pull-left(title="#{totalGood} Kudo#{totalGoodTag} for this period")
+								span.fa.fa-thumbs-up
+								span.p5l #{totalGood}
+							.pull-left.m10l(title="#{totalBad} Boo#{totalBadTag} for this period")
+								span.fa.fa-thumbs-down
+								span.p5l #{totalBad}
+					//- .col-md-3.col-sm-3.col-xs-3
+						.clearfix
+							.pull-right
+								- if(Number(leader.monthAvg) >= 750)
+									span.ribbon-score.ion-ribbon-b.highlight
+									span.ribbon-score.ion-ribbon-b.highlight
+									span.ribbon-score.ion-ribbon-b.highlight
+									span.ribbon-score.ion-ribbon-b.highlight
+								- else if(Number(leader.monthAvg) >= 500)
+									span.ribbon-score.ion-ribbon-b.highlight
+									span.ribbon-score.ion-ribbon-b.highlight
+									span.ribbon-score.ion-ribbon-b.highlight
+									span.ribbon-score.ion-ribbon-b
+								- else if(Number(leader.monthAvg) >= 250)
+									span.ribbon-score.ion-ribbon-b.highlight
+									span.ribbon-score.ion-ribbon-b.highlight
+									span.ribbon-score.ion-ribbon-b
+									span.ribbon-score.ion-ribbon-b
+								- else
+									span.ribbon-score.ion-ribbon-b.highlight
+									span.ribbon-score.ion-ribbon-b
+									span.ribbon-score.ion-ribbon-b
+									span.ribbon-score.ion-ribbon-b
+
+
+
+

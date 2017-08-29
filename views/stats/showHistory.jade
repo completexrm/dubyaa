@@ -1,0 +1,17 @@
+each item, id in history
+	.row.p10t.border-bottom.border-dashed.p10b
+		.col-lg-12.col-md-12.col-sm-12.col-xs-12
+			.clearfix
+				- if(Number(item.isDubyaa)===1)
+					.pull-left.m10r
+						img(width="24", style="opacity:0.7", src="/images/w-logo.png")
+				.pull-left #{item.label}
+	.row.border-bottom.p5b
+		.col-lg-6.col-md-6.col-sm-6.col-xs-6
+			.meta.small
+				span.bold Created on&nbsp;
+				| #{(item.createdOn !== '') ? moment(item.createdOn).format('MMM Do') : 'NA'}
+		.col-lg-6.col-md-6.col-sm-6.col-xs-6.align-right
+			- if(item.dubyaaDate !== '')
+				.meta.small
+					span.bold Won on #{moment(item.dubyaaDate).format('MMM Do')}

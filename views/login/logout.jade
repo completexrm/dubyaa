@@ -1,0 +1,11 @@
+extends ../layoutLogin
+
+append body
+	script(src='/js/controllers/logout.js')
+
+block content
+	#appData(data-si="#{si}")
+	.login-form
+		.row
+			.col-md-12
+				include ../partials/loader

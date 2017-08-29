@@ -1,0 +1,26 @@
+extends ../layout
+
+append body
+	script(src='/js/controllers/activity.js')
+
+block header
+	include ../partials/header
+
+block content
+	#content
+		#activity
+			#appData(data-display-name="#{session.dubyaaUser.user.displayName}", data-is-mobile="#{session.dataPlatform.uaMobile}", data-first-name="#{session.dubyaaUser.user.firstName}", data-last-name="#{session.dubyaaUser.user.lastName}", data-multiplier="#{session.dubyaaUser.account.prefs.dubyaaMultiplier}", data-maxopen="#{session.dubyaaUser.account.prefs.maxOpen}", data-acctid="#{session.dubyaaUser.user.accountId}", data-userid="#{session.dubyaaUser.user.id}", data-si="#{si}", data-firstlogin="#{session.dubyaaUser.user.isFirstLogin}", data-app-hints="#{session.dubyaaUser.prefs.appHints}")
+			#activityListButton(class="#{(session.dataPlatform.uaMobile)===0 ? 'container' : '' }")
+				.row.stats-header
+					.col-lg-12.col-md-12.col-sm-12.col-xs-12
+						| who's been winning
+				- if(Number(session.dubyaaUser.prefs.appHints)===1)
+					include ../partials/help/helpPulse
+				//- #benchList
+					include prodList
+				#activityList
+					include activityList
+				#activityMore
+						a.hide.btn.btn-primary.p20 Show More
+			block footer
+				include ../partials/footer

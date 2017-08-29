@@ -1,0 +1,30 @@
+- if(todo.updatedOn !=='' && Number(todo.isDeleted)===0)
+	- updateDate = 'Saved ' + moment(todo.updatedOn).format('MMMM Do YYYY, h:mm:ss a');
+- else
+	- updateDate = '';
+- var delegatedClass = (Number(todo.delegatorId) > 0) ? 'is-delegated' : '';
+.todo.mobile.backlog(id="todo#{todo.id}", data-id="#{todo.id}", class="#{delegatedClass}")
+	.row.mobile-top
+		.col-lg-12.col-md-12.col-sm-12.col-xs.12
+			.todo-container.p10.border-bottom.clearfix
+				- if(Number(todo.isNew)===1)
+					.pull-right.w10.align-center.border-left
+						a.btn.torch-backlog-todo(data-id="#{todo.id}", title="Disregard this")
+							.fa.fa-trash
+					.pull-right.w10.align-center.border-left
+						a.btn.save-backlog-todo(title="Save")
+							.fa.fa-save
+					.pull-left.w80
+						input.form-control.todo-item(placeholder="Something for later...")
+				- else
+					.pull-right.w10.align-center.border-left
+						a.btn.torch-todo(data-id="#{todo.id}", title="Delete forever")
+							.fa.fa-trash
+					.pull-right.w10.align-center.border-left
+						a.backlog-to-list.btn(data-id="#{todo.id}", title="Promote to your wins!")
+							span.ion-arrow-up-c
+					.pull-left.w80
+						.todo-label #{todo.label}
+
+	- if(Number(todo.delegatorId) > 0)
+		include todoMobileDelegated

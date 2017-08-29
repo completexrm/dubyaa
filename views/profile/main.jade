@@ -1,0 +1,26 @@
+extends ../layout
+
+append body
+	script(src='/js/controllers/profile.js')
+
+block header
+	include ../partials/header
+
+block content
+	#content
+		#profile
+			#appData(data-userid="#{session.dubyaaUser.user.id}", data-accountid="#{session.dubyaaUser.account.id}")
+			.row.stats-header
+				.col-md-12.col-sm-12.col-xs-12
+					| your profile
+			.row
+				.col-md-12.col-sm-12.col-xs-12.align-right
+					.p5t.p5b
+						span#saveMsg.p10r.meta.hide
+						a#saveProfile.btn.btn-success.btn-big Save
+			.row
+				#paintProfile.col-md-12.col-sm-12.col-xs-12
+					include ../partials/loader
+
+		block footer
+			include ../partials/footer

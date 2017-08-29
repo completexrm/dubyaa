@@ -1,0 +1,21 @@
+.row.stats-header.secondary
+	.col-md-12.col-sm-12.col-xs-12
+		| general
+.row.account-section
+	.col-md-12.col-sm-12.col-xs-12.section-body
+		.section-detail
+			label Display Name
+			input#displayName.form-control(value="#{session.dubyaaUser.user.displayName}")
+			.w100.clearfix.p10t
+				.pull-left.w50
+					.p5r
+						label First Name
+						input#firstName.form-control(value="#{session.dubyaaUser.user.firstName}")
+				.pull-left.w50
+					.p5l
+						label Last Name
+						input#lastName.form-control(value="#{session.dubyaaUser.user.lastName}")
+		.section-detail
+			include ../partials/settings/userMobileSettings
+		.section-detail
+			include ../partials/settings/userTimezone

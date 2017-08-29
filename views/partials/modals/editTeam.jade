@@ -1,0 +1,15 @@
+#modalEditTeam(data-acctid="#{session.dubyaaUser.user.accountId}", data-userid="#{session.dubyaaUser.user.id}")
+	#editTeam.modal.fade
+		input#teamId(type="hidden", value="")
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type="button", data-dismiss="modal", aria-label="Close")
+						span(aria-hidden="true") &times;
+					h4.modal-title Manage Team
+				.modal-body.clearfix
+					label Team Name
+					input#displayName.form-control
+				.modal-footer
+					button.btn.btn-default(type="button", data-dismiss="modal") Close
+					button#doUpdateTeam.btn.btn-primary(type="button") Save Changes

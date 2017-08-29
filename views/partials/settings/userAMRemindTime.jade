@@ -1,0 +1,26 @@
+label AM Reminder Time
+select#onboardAMRemindTime.form-control
+	- if(profile.prefs.amRemindTime==='06:00:00')
+		option(value="06:00:00" selected) 6 am
+	- else
+		option(value="06:00:00") 6 am
+	
+	- if(profile.prefs.amRemindTime==='07:00:00')
+		option(value="07:00:00" selected) 7 am
+	- else
+		option(value="07:00:00") 7 am
+
+	- if(profile.prefs.amRemindTime==='08:00:00')
+		option(value="08:00:00" selected) 8 am
+	- else
+		option(value="08:00:00") 8 am
+
+	- if(profile.prefs.amRemindTime==='09:00:00')
+		option(value="09:00:00" selected) 9 am
+	- else
+		option(value="09:00:00") 9 am
+
+	- if(profile.prefs.amRemindTime==='10:00:00')
+		option(value="10:00:00" selected) 10 am
+	- else
+		option(value="10:00:00") 6 am

@@ -1,0 +1,16 @@
+extends ../layoutLogin
+
+
+block append content
+	.row.stats-header.tertiary.blue
+		.col-md-12.col-sm-12.col-xs-12
+			a.block(href="/") go back
+	.row.stats-header
+		.col-md-12.col-sm-12.col-xs-12 current known bugs
+	.row
+		.col-md-12.col-sm-12.col-xs-12
+			ul.release-notes
+				li when viewing your W's, if there is no expiration date set it won't display Won date.
+				li
+					| main screen will sometimes not allow you to enter more items :: 
+					span.bold page refresh corrects

@@ -1,0 +1,57 @@
+.row.account-section.border-top.border-dark
+	.col-md-3.col-sm-3.section-name
+		.clearfix
+			.pull-left
+				p Subscription & Billing
+			.pull-right
+				.p10t.p20r
+					a.btn.btn-default.btn-xs Change Subscription
+	.col-md-9.col-sm-9.section-body
+		.section-detail
+			.clearfix
+				.detail-left
+					span.data.bold #{session.dubyaaUser.account.subscriptionLabel}
+				.detail-right
+					a.p5l.link-right Cancel Account
+		.section-detail.border-top
+			.clearfix
+				.detail-left
+					#emailLabel.toggle-email-selector
+						span.data #{session.dubyaaUser.account.primaryEmail}
+					#emailEdit.hide.toggle-email-selector.clearfix
+						.pull-left.w80
+							input#primaryEmail.form-control(type="text", value="#{session.dubyaaUser.account.primaryEmail}")
+						.pull-left.w20
+							.m5l
+								a#saveEmail.btn.btn-success Save
+								#saveEmailLoader.hide
+									include ../partials/loader
+				.detail-right
+					.p5l
+						a.toggle-email-selector.toggle-email.link-right Change primary email
+						//- a.btn.btn-success.toggle-email-selector.hide Save
+						a.toggle-email-selector.toggle-email.hide.link-right Cancel
+			//- .clearfix
+				.detail-right
+					a.p5l.link-right Email preferences
+		.section-detail.border-top
+			.clearfix
+				.detail-left
+					.data.clearfix
+						#cardInfoView.toggle-payment-selector
+							.pull-left
+								span.ion-card.p5r.font-l
+							.pull-left #{session.dubyaaUser.account.payment.cType}
+							.pull-left.p5l **** #{session.dubyaaUser.account.payment.cLastFour}
+						#cardInfoEdit.toggle-payment-selector.hide
+							.clearfix
+								.pull-left 
+									input.initial-focus.form-control(value="#{session.dubyaaUser.account.payment.cType}")
+								.pull-left.p5l
+									input.form-control(value="**** **** **** #{session.dubyaaUser.account.payment.cLastFour}")
+				.detail-right
+					a.toggle-payment-selector.toggle-payment.link-right Update payment info
+					a.toggle-payment-selector.toggle-payment.hide.link-right Cancel
+			//- .clearfix
+				.detail-right
+					a.p5l.link-right Billing history

@@ -1,0 +1,144 @@
+- if(Number(session.dubyaaUser.user.isPWReset) > 0)
+	#onboardPasswordContainer.row
+		.col-lg-12.col-md-12.col-sm-12.col-xs-12
+			label Reset Your Password
+			input#pw.pw-reset.form-control(type="password", placeholder="New password...")
+			input#pwConfirm.pw-reset.form-control(type="password", placeholder="Confirm password...")
+#onboardTimezoneContainer.row
+	.col-lg-12.col-md-12.col-sm-12.col-xs-12
+		label Timezone
+		select#onboardTimezone.form-control
+			option(value="0") Your timezone...
+			- if(session.dubyaaUser.user.tzOffset==='-180')
+				option(value="-180" selected) American/Pacific
+			- else
+				option(value="-180") American/Pacific
+			- if(session.dubyaaUser.user.tzOffset==='-120')
+				option(value="-120" selected) American/Mountain
+			- else
+				option(value="-120") American/Mountain
+			- if(session.dubyaaUser.user.tzOffset==='-60')
+				option(value="-60" selected) American/Central
+			- else
+				option(value="-60") American/Central
+			- if(session.dubyaaUser.user.tzOffset==='0')
+				option(value="0" selected) American/Eastern
+			- else
+				option(value="0") American/Eastern
+#onboardProfileContainer
+	.row
+		.col-lg-12.col-md-12.col-sm-12.col-xs-12
+			label Email Address
+			input#emailAddress.form-control(value="#{session.dubyaaUser.user.emailAddress}")
+	.row
+		.col-lg-6.col-md-6.col-sm-6.col-xs-6
+			.p5r
+				label Mobile #
+				input#mobileNumber.form-control(value="#{session.dubyaaUser.user.mobileNumber}")
+		.col-lg-6.col-md-6.col-sm-6.col-xs-6
+			.p5l
+				label Carrier
+				select#mobileCarrierSMS.form-control
+					option(value="") Select Carrier...
+					- if(session.dubyaaUser.user.mobileCarrierSMS==='txt.att.net')
+						option(value="txt.att.net" selected) AT&T
+					- else
+						option(value="txt.att.net") AT&T
+					- if(session.dubyaaUser.user.mobileCarrierSMS==='messaging.sprintpcs.com')
+						option(value="messaging.sprintpcs.com" selected) T-Mobile
+					- else
+						option(value="messaging.sprintpcs.com") T-Mobile
+					- if(session.dubyaaUser.user.mobileCarrierSMS==='tmomail.net')
+						option(value="tmomail.net" selected) Sprint
+					- else
+						option(value="tmomail.net") Sprint
+					- if(session.dubyaaUser.user.mobileCarrierSMS==='vtext.com')
+						option(value="vtext.com" selected) Verizon
+					- else
+						option(value="vtext.com") Verizon
+#onboardReminderContainer
+	.row
+		.col-lg-12.col-md-12.col-sm-12.col-xs-12
+			label Receive Email Reminders?
+			select#onboardReminders.form-control
+				- if(Number(session.dubyaaUser.prefs.hasReminders)===1)
+					option(value="1" selected) Yes!
+				- else
+					option(value="1") Yes!
+				- if(Number(session.dubyaaUser.prefs.hasReminders)===0)
+					option(value="0" selected) No thanks
+				- else
+					option(value="0") No thanks
+			label Receive Text Reminders?
+			select#onboardRemindersSMS.form-control
+				- if(Number(session.dubyaaUser.prefs.hasRemindersSMS)===1)
+					option(value="1" selected) Yes!
+				- else
+					option(value="1") Yes!
+				- if(Number(session.dubyaaUser.prefs.hasRemindersSMS)===0)
+					option(value="0" selected) No thanks
+				- else
+					option(value="0") No thanks
+	- var remindTimeHideClass = (Number(session.dubyaaUser.prefs.hasReminders)===1 || Number(session.dubyaaUser.prefs.hasRemindersSMS)===1) ? '' : 'hide'
+	.row(class="#{remindTimeHideClass}")
+		.col-lg-12.col-md-12.col-sm-12.col-xs-12
+			label AM Reminder Time
+			select#onboardAMRemindTime.form-control
+				- if(session.dubyaaUser.prefs.amRemindTime==='06:00:00')
+					option(value="06:00:00" selected) 6 am
+				- else
+					option(value="06:00:00") 6 am
+				
+				- if(session.dubyaaUser.prefs.amRemindTime==='07:00:00')
+					option(value="07:00:00" selected) 7 am
+				- else
+					option(value="07:00:00") 7 am
+
+				- if(session.dubyaaUser.prefs.amRemindTime==='08:00:00')
+					option(value="08:00:00" selected) 8 am
+				- else
+					option(value="08:00:00") 8 am
+
+				- if(session.dubyaaUser.prefs.amRemindTime==='09:00:00')
+					option(value="09:00:00" selected) 9 am
+				- else
+					option(value="09:00:00") 9 am
+
+				- if(session.dubyaaUser.prefs.amRemindTime==='10:00:00')
+					option(value="10:00:00" selected) 10 am
+				- else
+					option(value="10:00:00") 6 am
+
+	.row
+		.col-lg-12.col-md-12.col-sm-12.col-xs-12
+			label PM Reminder Time
+			select#onboardPMRemindTime.form-control
+				- if(session.dubyaaUser.prefs.pmRemindTime==='16:00:00')
+					option(value="16:00:00" selected) 4 pm
+				- else
+					option(value="16:00:00") 4 pm
+				
+				- if(session.dubyaaUser.prefs.pmRemindTime==='17:00:00')
+					option(value="17:00:00" selected) 5 pm
+				- else
+					option(value="17:00:00") 5 pm
+
+				- if(session.dubyaaUser.prefs.pmRemindTime==='18:00:00')
+					option(value="18:00:00" selected) 6 pm
+				- else
+					option(value="18:00:00") 6 pm
+
+				- if(session.dubyaaUser.prefs.pmRemindTime==='19:00:00')
+					option(value="19:00:00" selected) 7 pm
+				- else
+					option(value="19:00:00") 7 pm
+
+				- if(session.dubyaaUser.prefs.pmRemindTime==='20:00:00')
+					option(value="20:00:00" selected) 8 pm
+				- else
+					option(value="20:00:00") 8 pm
+
+				- if(session.dubyaaUser.prefs.pmRemindTime==='21:00:00')
+					option(value="21:00:00" selected) 9 pm
+				- else
+					option(value="21:00:00") 9 pm

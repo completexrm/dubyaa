@@ -1,0 +1,65 @@
+- var date = moment(activity.createdOn).format('MMM Do[,] h:mm a');
+- var hideClass = (activity.reaction.id === null || activity.reaction.id === '') ? '' : 'reacted'
+.activity-item(class="#{hideClass}")
+	.row.border-bottom.border-dashed
+		.col-lg-12.col-md-12.col-sm-12.col-xs-12
+			.activity.clearfix
+				.p5l.p5r.p5b
+					.pull-right.w10.align-right
+						.p5t
+							- if(activity.actionType==='won')
+								img(width="24", style="opacity:0.7", src="/images/w-logo.png")
+							- if(activity.actionType==='instawin')
+								.instawin-icon
+									span.fa.fa-bolt
+					.pull-left.w10
+						.m5t.m5b
+							- var url = (activity.photoPath) ? '/uploads/' + activity.photoPath : '/images/profile-generic.png';
+							img.w100.block(src="#{url}")
+					.pull-left.w80
+						.p10l
+							span.meta.small #{activity.displayName} #{activity.actionType}:
+							br
+							| #{activity.todo}
+	.row.border-bottom
+		.col-lg-8.col-md-8.col-sm-8.col-xs-8
+			.meta.small.p10l #{date}
+		.col-lg-4.col-md-4.col-sm-4.col-xs-4
+			.clearfix.reactions
+				- var thumbsUpClass = (Number(activity.reaction.isGood)===1) ? 'success' : 'default';
+				- var totalGood = (activity.reactionTotals.isGoodTotal !== '') ? activity.reactionTotals.isGoodTotal : '0';
+				.pull-right
+					- if(Number(activity.reaction.isGood)===1)
+						a.kill-reaction.react.btn.block(class="btn-#{thumbsUpClass}", title="Remove your reaction", data-id="#{activity.reaction.id}", data-todo-id="#{activity.actionId}", style="line-height:10px;")
+							span.meta.small.p5r #{totalGood}
+							span.fa.fa-thumbs-up
+					- else
+						- if(Number(loginUser.id) !== Number(activity.userId))
+							a.btn.block.react.do-react(class="btn-#{thumbsUpClass}", title="Say Kudos!", data-who-reacted="#{activity.displayName}", data-todo="#{activity.todo}", data-action-id="#{activity.actionId}",data-activity-id="#{activity.activityId}", data-to-id="#{activity.userId}", data-react="good")
+								span.meta.small.p5r #{totalGood}
+								span.fa.fa-thumbs-up
+						- else
+							span.meta.small.p5r #{totalGood}
+							span.fa.fa-thumbs-up
+				//- var disputeClass = (Number(activity.reaction.isDispute)===1) ? 'warning' : 'default';
+				//- var totalDispute = (activity.reactionTotals.isDisputeTotal !== '') ? activity.reactionTotals.isDisputeTotal : '0';
+				//- .pull-left.w33
+					- if(Number(activity.reaction.isDispute)===1)
+						a.kill-reaction.react.btn.block(class="btn-#{disputeClass}", title="Remove your reaction", data-id="#{activity.reaction.id}", data-todo-id="#{activity.actionId}", style="line-height:10px;")
+							span.fa.fa-warning
+							span.meta.small.p5l #{totalDispute}
+					- else
+						a.btn.block.react.do-react(class="btn-#{disputeClass}", title="Dispute this", data-who-reacted="#{activity.displayName}", data-todo="#{activity.todo}", data-action-id="#{activity.actionId}",data-activity-id="#{activity.activityId}", data-to-id="#{activity.userId}", data-react="dispute")
+							span.fa.fa-warning
+							span.meta.small.p5l #{totalDispute}
+				//- var thumbsDownClass = (Number(activity.reaction.isBad)===1) ? 'danger' : 'default';
+				//- var totalBad = (activity.reactionTotals.isBadTotal !== '') ? activity.reactionTotals.isBadTotal : '0';
+				//- .pull-left.w33
+					- if(Number(activity.reaction.isBad)===1)
+						a.kill-reaction.react.btn.block(class="btn-#{thumbsDownClass}", title="Remove your reaction", data-id="#{activity.reaction.id}", data-todo-id="#{activity.actionId}", style="line-height:10px;")
+							span.fa.fa-thumbs-down
+							span.meta.small.p5l #{totalBad}
+					- else
+						a.btn.block.react.do-react(class="btn-#{thumbsDownClass}", title="Give them a Boo!", data-who-reacted="#{activity.displayName}", data-todo="#{activity.todo}", data-action-id="#{activity.actionId}",data-activity-id="#{activity.activityId}", data-to-id="#{activity.userId}", data-react="bad")						
+							span.fa.fa-thumbs-down
+							span.meta.small.p5l #{totalBad}

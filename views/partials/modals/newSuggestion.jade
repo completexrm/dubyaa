@@ -1,0 +1,82 @@
+#modalNewSuggestion(data-acctid="#{session.dubyaaUser.user.accountId}", data-userid="#{session.dubyaaUser.user.id}")
+	#newSuggestion.modal.fade
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type="button", data-dismiss="modal", aria-label="Close")
+						span(aria-hidden="true") &times;
+					h4.modal-title Make a Suggestion...
+				.modal-body.clearfix
+					.new-suggestion(data-step="1")
+						.p10b.m10b.border-bottom
+							label this is for:
+						.clearfix.options
+							.pull-left.w45
+								a.btn.block.btn-default.option-select.active.all-users
+									span.fa.fa-globe.p5r
+									| all users
+							.pull-left.w10
+								.p5l.p5r.align-center
+									.span.meta.small or
+							.pull-left.w45
+								a.btn.block.btn-default.option-select.specific-user
+									span.fa.fa-user.p5r
+									| someone specific
+						.clearfix.user-select.hide
+							.w100.m10t
+								select#userId.block.form-control
+									option(value="") Select individual...
+						.border-top.m10t.p10t
+							.clearfix.w100
+								.pull-right
+									a#doGoReward.do-go.btn.btn-primary(data-go="2", type="button")
+										| Reward
+										span.fa.fa-arrow-right.p5l
+					.new-suggestion.hide(data-step="2")
+						.p10b.m10b.border-bottom
+							label will there be a reward for completing this?:
+						.clearfix.options
+							.pull-left.w45
+								a.btn.block.btn-default.option-select.active.no-reward
+									span.fa.fa-ban.p5r
+									| nada, skip it
+							.pull-left.w10
+								.p5l.p5r.align-center
+									.span.meta.small or
+							.pull-left.w45
+								a.btn.block.btn-default.option-select.yes-reward
+									span.fa.fa-gift.p5r
+									| yep, let's do it
+						.clearfix.reward-description.hide
+							.w100.m10t
+								textarea#reward.form-control(placeholder="Describe what you're willing to give!...")
+						.border-top.m10t.p10t
+							.clearfix.w100
+								.pull-right
+									a#doGoSuggestion.do-go.btn.btn-primary(data-go="3", type="button")
+										| Suggestion
+										span.fa.fa-arrow-right.p5l
+								.pull-left
+									a.do-go.btn.btn-default(data-go="1", type="button")
+										span.fa.fa-arrow-left.p5r
+										| Back
+					.new-suggestion.hide(data-step="3")
+						.p10b.m10b.border-bottom
+							label finally...what's your idea / suggestion?
+						.w100.clearfix.options
+							textarea#suggestion.form-control(placeholder="Describe your suggestion or idea...")
+						.border-top.m10t.p10t
+							.clearfix.w100
+								.pull-right
+									a#doSaveSuggestion.btn.btn-success(type="button")
+										span.fa.fa-thumbs-up.p5r
+										| All Set!
+								.pull-left
+									a.do-go.btn.btn-default(data-go="2", type="button")
+										span.fa.fa-arrow-left.p5r
+										| Back
+
+					//- textarea#suggestion.form-control.required(placeholder='"What if you worked on this next week?...')
+				.modal-footer.hide
+					button.btn.btn-default(type="button", data-dismiss="modal") Close
+					button#sendSuggestion.btn.btn-primary.hide(type="button") Send Suggestion

@@ -1,0 +1,17 @@
+.row.stats-header.secondary
+	.col-md-12.col-sm-12.col-xs-12
+		| security
+.row.account-section
+	.col-md-12.col-sm-12.col-xs-12.section-body
+		.section-detail
+			label Username
+			.m5t.m10b.p10b.border-bottom #{session.dubyaaUser.user.emailAddress}
+			label Password
+			.bold
+				span.meta.p10r ********
+				a.do-pw-change.font-xs Change
+			.pw-change.clearfix.w100
+				.pull-left.w50
+					input#pw1.form-control.hide(value="")
+				.pull-left.w50
+					input#pw2.form-control.hide(value="")

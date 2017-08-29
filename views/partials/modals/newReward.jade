@@ -1,0 +1,15 @@
+#modalNewReward(data-acctid="#{session.dubyaaUser.user.accountId}", data-userid="#{session.dubyaaUser.user.id}")
+	#newReward.modal.fade
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type="button", data-dismiss="modal", aria-label="Close")
+						span(aria-hidden="true") &times;
+					h4.modal-title Offer a Reward!
+				.modal-body.clearfix
+					p.meta
+						| Offer your team incentives for Winning their day!
+					textarea#suggestion.form-control.required(placeholder="What if you worked on this next week?...")
+				.modal-footer
+					button.btn.btn-default(type="button", data-dismiss="modal") Close
+					button#sendSuggestion.btn.btn-primary(type="button") Send Suggestion

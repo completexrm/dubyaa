@@ -1,0 +1,36 @@
+extends ../layout
+
+append body
+	script(src='/js/controllers/messages.js')
+
+block header
+	include ../partials/header
+
+block content
+	#content
+		#messages
+			.row.stats-header
+				.col-lg-12.col-md-12.col-sm-12.col-xs-12
+					| group messages
+			- if(Number(session.dubyaaUser.prefs.appHints)===1)
+				include ../partials/help/helpMessages
+			.row
+				#appData(data-is-mobile="#{session.dataPlatform.uaMobile}", data-first-name="#{session.dubyaaUser.user.firstName}", data-last-name="#{session.dubyaaUser.user.lastName}", data-multiplier="#{session.dubyaaUser.account.prefs.dubyaaMultiplier}", data-maxopen="#{session.dubyaaUser.account.prefs.maxOpen}", data-acctid="#{session.dubyaaUser.user.accountId}", data-userid="#{session.dubyaaUser.user.id}", data-si="#{si}", data-firstlogin="#{session.dubyaaUser.user.isFirstLogin}", data-app-hints="#{session.dubyaaUser.prefs.appHints}")
+				.col-lg-10.col-md-10.col-sm-10.col-xs-10
+					.p10t.p10l.p5r
+						textarea#new.form-control(placeholder="What's on your mind?")
+				.col-lg-2.col-md-2.col-sm-2.col-xs-2
+					.p10t.p10r.p5l
+						a#post.btn.btn-success
+							.fa.fa-plus
+			.row.border-top.p10t.m10t
+				.col-lg-12.col-md-12.col-sm-12.col-xs-12
+					include ../partials/noMessages
+					#loader
+						include ../partials/loader
+					#messagesList.p10l.p10r
+					#messagesMore
+						a.hide.btn.btn-primary.p20 Show More
+
+			block footer
+				include ../partials/footer

@@ -1,0 +1,11 @@
+tr
+	td
+		a.edit-level(href="#editLevel", data-toggle="modal", data-id="#{level.id}", data-label="#{level.label}", data-valuelo="#{level.valueLo}", data-valuehi="#{level.valueHi}")
+			| #{level.label}
+	td
+		.meta #{level.valueLo}
+	td
+		.meta #{level.valueHi}
+	td.align-right
+		a.btn.btn-danger.delete-level(data-id="#{level.id}", data-label="#{level.label}")
+			.fa.fa-trash

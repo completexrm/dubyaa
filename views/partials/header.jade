@@ -1,0 +1,32 @@
+#headerBottom.row.header.top
+	.col-lg-6.col-md-6.col-sm-6.col-xs-6
+		include nav
+	//- .col-lg-2.col-md-2.col-sm-2.col-xs-2.align-center
+		.p5t
+			img(width="40", src="/images/w-logo.png")
+	.col-lg-6.col-md-6.col-sm-6.col-xs-6
+		.btn-group.pull-right
+			- var hideSuggestionClass = (navGoBack===true) ? 'hide' : ''
+			- var hideSuggestionClass = (navGoBack===true) ? 'hide' : ''
+			a.gifts(href="/gifts", class="#{hideSuggestionClass}", title="Gifts You've Won")
+				span.fa.fa-gift
+			a.relative(href="/suggestions", class="#{hideSuggestionClass}", title="Suggestions from other users")
+				#suggestionCount.message-count.hide 3
+				span.ion-ios-lightbulb
+			a.dropdown-toggle(type="button", data-toggle="dropdown", aria-expanded="false")
+				span.ion-ios-gear
+			ul.dropdown-menu(role="menu")
+				li
+					a(href="/profile", title="My profile")
+						span.ion-toggle-filled
+						| Profile
+				- if(Number(session.dubyaaUser.user.isAccountAdmin)===1)
+					li
+						a(href="/account", title="Manage account")
+							span.ion-wrench
+							| Manage Account
+				li.divider
+				li
+					a(href="/logout", title="Logout")
+						span.ion-android-exit
+						| Logout

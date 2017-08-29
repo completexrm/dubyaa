@@ -1,0 +1,22 @@
+- var noGoalQTDClass = (quarter.goal > 0) ? 'hide' : '';
+- var noGoalQTDBarClass = (!quarter.goal || quarter.goal === 0) ? 'hide' : '';
+
+- if(Number(quarter.pts)===0)
+	include noPoints
+- else
+	- var qClass = (Number(quarter.percent) < 20) ? 'danger' : (Number(quarter.percent) < 75) ? 'warning' : 'success';
+	.mtd 
+		.no-goal.border-bottom.p10.alert-danger(class="#{noGoalQTDClass}")
+			.clearfix
+				.pull-left.p5r
+					span.ion-sad-outline.icon.font-xl
+				.pull-left
+					.bold You don't have a Q#{moment().quarter()} #{moment().format('YYYY')} goal
+					.meta
+						a.manage-goals Create one now 
+						| to see your points!
+		.clearfix(class="#{noGoalQTDBarClass}")
+			h5.progress-label.pull-left Q#{moment().quarter()} #{moment().format('YYYY')}
+			.meta.pull-right #{quarter.percent}%
+		.progress(class="#{noGoalQTDBarClass}")
+			.progress-bar.progress-bar-striped.tx(class="progress-bar-#{qClass}", role="progressbar", aria-valuenow="#{quarter.percent}", aria-valuemin="0", aria-valuemax="100", style="width: #{quarter.percent}%;")

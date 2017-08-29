@@ -1,0 +1,14 @@
+#modalNewTeam(data-acctid="#{session.dubyaaUser.user.accountId}", data-userid="#{session.dubyaaUser.user.id}")
+	#newTeam.modal.fade
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type="button", data-dismiss="modal", aria-label="Close")
+						span(aria-hidden="true") &times;
+					h4.modal-title Create New Team
+				.modal-body.clearfix
+					label Team Name
+					input#displayName.form-control.required
+				.modal-footer
+					button.btn.btn-default(type="button", data-dismiss="modal") Close
+					button#saveTeam.btn.btn-primary(type="button", data-goal-type="Y", data-goal-parent="modalSetGoalYear") Save Changes

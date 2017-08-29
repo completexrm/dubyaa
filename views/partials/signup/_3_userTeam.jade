@@ -1,0 +1,32 @@
+#userTeam.row.hide.signup-step(data-step="3")
+	.row.stats-header
+		.col-md-12.col-sm-12.col-xs-12
+			| create your first team
+	.row
+		.col-md-12
+			.p10
+				p
+					label teams help users work together in dubyaa
+				.new-team-template.new-team.clearfix.hide
+					.row.m10t
+						.col-md-11.col-sm-11.col-xs-11
+							input.team-name.form-control(placeholder="Enter your desired Team name...")
+						.col-md-1.col-sm-1.col-xs-1.align-right
+							a.delete-team.btn.btn-danger
+								.fa.fa-trash
+				#teams
+					input.initial-focus.team-name.form-control(placeholder="Enter your desired Team name...")
+				.align-right.p5t
+					a.add-team.meta.small + Add another team
+	.row.operands
+		.col-md-12.col-sm-12.col-xs-12
+			.clearfix.p10
+				.pull-left
+					a.go-login(href="/login") Goto Login
+				.pull-right
+					a.team-later.go-profile.m10r(data-step="2") I'll do this later
+					a.go-back.btn.btn-warning.m5r(data-step="2")
+						span.fa.fa-chevron-left
+					a#saveTeams.go-profile.btn.btn-success.disabled
+						| Profile
+						span.p5l.fa.fa-chevron-right

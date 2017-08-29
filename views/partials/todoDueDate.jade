@@ -1,0 +1,36 @@
+//- - var due, dueTag, now, diff, dueClass='', iconClass='ion-ios-clock-outline';
+//- - if(typeof todo.dateDue !== 'undefined' && todo.dateDue !== '')
+//- 	- due = moment(todo.dateDue).format('MMM D YYYY');
+//- 	- duePretty = moment(todo.dateDue).format('MMM Do');
+//- 	- now = moment().format('MMMM Do YYYY, h:mm:ss a')
+//- 	- diff = moment(due,"DD/MM/YYYY HH:mm:ss").diff(moment(now,"DD/MM/YYYY HH:mm:ss"));
+//- 	- if(todo.isDubyaa > 0)
+//- 		- iconClass = 'ion-ribbon-b';
+//- 		- dueTag = 'Won ' + moment(todo.dubyaaDate).format('MMM D YYYY');
+//- 	- else
+//- 		- if(Number(todo.delegatorId)===0)
+//- 			- dueTag = '<a title="Set / change expiration date" class="set-due-date needs-id btn" data-id="' + todo.id + '">Expires ' + due + '</span></a>';
+//- 		- else
+//- 			- dueTag = '<span>Expires ' + duePretty + '</span>';
+//- - else
+//- 	- dueClass = 'no-due-date'
+//- 	- dueTag = 'No expiration!';
+//- 	- if(Number(todo.isDubyaa)===0)
+//- 		- dueTag = ' <a title="Set / change expiration date" class="set-due-date needs-id btn" data-id="' + todo.id + '">No expiration!</a>';
+//- .date-time-due(class="#{dueClass}")
+//- 	- if(Number(todo.isDeleted)===0 || typeof todo.isDeleted==='undefined')
+//- 		#displayDueDateTime
+//- 			span.icon(class="#{iconClass}")
+//- 			| !{dueTag}
+//- 		#editDueDateTime.hide.clearfix
+//- 			.pull-left
+//- 				input.date.needs-id(type="date", data-id="#{todo.id}", value="#{(typeof todo.dateDue !== 'undefined' && todo.dateDue.length) ? moment(todo.dateDue).format('MM/DD/YY') : moment().format('MM/DD/YY')}")
+//- 	- else
+//- 		| Deleted on #{moment(todo.updatedOn).format('MMM Do')}
+- if(Number(todo.isDubyaa)===1)
+	- var ptsBonus = (Number(todo.points) < Number(todo.pointsAwarded)) ? '(Bonus!)' : '';
+	.meta
+		span.ion-ribbon-b.p5r
+		| Won #{moment(todo.dubyaaDate).format('MMM Do')} #{ptsBonus}
+- else
+	input.date.needs-id.hide(type="date", data-id="#{todo.id}", value="#{(typeof todo.dateDue !== 'undefined' && todo.dateDue.length) ? moment(todo.dateDue).format('MM/DD/YY') : moment().format('MM/DD/YY')}")

@@ -1,0 +1,42 @@
+#modalNewUser(data-acctid="#{session.dubyaaUser.user.accountId}", data-userid="#{session.dubyaaUser.user.id}")
+	#newUser.modal.fade
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type="button", data-dismiss="modal", aria-label="Close")
+						span(aria-hidden="true") &times;
+					h4.modal-title
+						span.ion-person.p5r
+						| New User
+				.modal-body
+					.w100.clearfix
+						.pull-left.w50
+							.p5r
+								label First Name
+								input#firstName.form-control.form-element.required
+						.pull-left.w50
+							.p5l
+								label Last Name
+								input#lastName.form-control.form-element.required
+					.w100.clearfix.m10t
+						label Email Address
+						input#emailAddress.form-control.form-element.required
+					.w100.clearfix.m10t.new-user-team-elements
+						label.m10r Select Team: 
+						select#newUserTeam.form-control.form-element
+							option ...
+					.w100.clearfix.m10t
+						label.m10r Accont Administrator?
+						input#isAccountAdmin.form-element(type="checkbox")
+						#adminNote.alert.alert-warning.hide
+							p
+								strong NOTE: 
+								| This will give full access to entire Dubyaa application. 
+				.modal-footer
+					.clearfix
+						#loader.hide.pull-right.m5l
+							include ../loader
+						.pull-right.m5l
+							button#doNewUser.save-goal.btn.btn-primary(type="button") Create User
+						.pull-right
+							button.btn.btn-default(type="button", data-dismiss="modal") Close

@@ -1,0 +1,13 @@
+tr
+	td
+		a.edit-team(href="#editTeam", data-toggle="modal", data-id="#{team.info.id}", data-name="#{team.info.displayName}")
+			| #{team.info.displayName}
+	td
+		a.change-team-lead(href="#changeTeamLead", data-toggle="modal", data-team-lead-id="#{team.info.teamLeadId}", data-team-id="#{team.info.id}")
+			| #{team.info.teamLead}
+	td
+		a.change-team(href="#changeTeam", data-toggle="modal", data-id="#{team.info.id}")
+			| #{team.info.userCount}
+	td.align-right
+		a.btn.btn-danger.delete-team(data-id="#{team.info.id}", data-name="#{team.info.displayName}")
+			.fa.fa-trash

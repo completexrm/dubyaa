@@ -1,0 +1,16 @@
+#nav.bottom.nav
+    ul
+        li(class="#{activeNav==='activity' ? 'active' : ''}")
+            a(href="/activity", title="Account activity")
+                .ion-ios-pulse-strong
+        li(class="#{activeNav==='stats' ? 'active' : ''}")
+            a(href="/stats", title="Leaderboard, stats, performance")
+                .ion-trophy
+        - if(session.dubyaaUser.user.hasTeams==='true' || Number(session.dubyaaUser.user.isAccountAdmin)===1)
+            li(class="#{activeNav==='teams' ? 'active' : ''}")
+                a(href="/teams", title="My teams")
+                    .ion-person-stalker
+        li(class="#{activeNav==='messages' ? 'active' : ''}")
+            a.relative(href="/messages", title="Message board")
+                #unreadMessages.message-count.hide 3
+                .ion-ios-chatboxes

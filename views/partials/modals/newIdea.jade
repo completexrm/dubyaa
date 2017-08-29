@@ -1,0 +1,13 @@
+#modalNewIdea(data-acctid="#{session.dubyaaUser.user.accountId}", data-userid="#{session.dubyaaUser.user.id}")
+	#newIdea.modal.fade
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type="button", data-dismiss="modal", aria-label="Close")
+						span(aria-hidden="true") &times;
+					h4.modal-title Have an Idea? Throw it out there!
+				.modal-body.clearfix
+					textarea#idea.form-control.required(placeholder='"Something that someone can pickup to get a Win...')
+				.modal-footer
+					button.btn.btn-default(type="button", data-dismiss="modal") Close
+					button#saveIdea.btn.btn-primary(type="button") Save it!

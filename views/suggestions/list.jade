@@ -1,0 +1,23 @@
+- fromName = (dubyaaUser.user.id===suggestion.fromId) ? 'You' : suggestion.displayName;
+.suggestion
+	.row.m10b
+		.col-md-1.col-sm-1.col-xs-1.align-center
+			span.suggestion-icon.ion-ios-lightbulb
+		.col-md-11.col-sm-11.col-xs-11
+			.p10l
+				.suggestion-label "#{suggestion.suggestion}"
+				.meta.small.p5l From #{fromName} on #{moment(suggestion.createdOn).format('MMM Do [at] hh:mma')}
+				- if(suggestion.reward!=='')
+					.row.gift-detail
+						.col-md-1.col-sm-1.col-xs-1.align-center
+							span.suggestion-icon.fa.fa-gift.gift
+						.col-md-11.col-sm-11.col-xs-11 #{suggestion.reward}
+	.row
+		.col-md-6.col-sm-6.col-xs-6
+			a.btn.btn-danger.mark-delete.block.no-radius(data-id="#{suggestion.id}")
+				span.fa.fa-archive.p5r
+				| Dismiss
+		.col-md-6.col-sm-6.col-xs-6
+			a.btn.btn-primary.mark-backlog.block.no-radius(data-id="#{suggestion.id}", data-label="#{suggestion.suggestion}", title="Add this to your Save for Later...")
+				span.fa.fa-plus.p5r
+				| Add to My List

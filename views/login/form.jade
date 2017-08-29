@@ -1,0 +1,38 @@
+extends ../layoutLogin
+
+append body
+	script(src='/js/controllers/login.js')
+
+block append content
+	#loginForm.login-form
+		input#isUH(type="hidden", value="0")
+		.row
+			.col-lg-12.col-md-12.col-sm-12
+				input#loginUsername.form-control(placeholder="Email address")
+		.row.m5t.m5b
+			.col-lg-12.col-md-12.col-sm-12
+				input#loginPassword.form-control(type="password", placeholder="Password")
+		.row.m10t
+			.col-lg-6.col-md-6.col-sm-6.col-xs-6
+				a#doLogin.btn.btn-primary.m10r Login
+			.col-lg-6.col-md-6.col-sm-6.col-xs-6.align-right
+				input#loginKeepMe(type="checkbox")
+				span.meta.p5l Remember me
+		.row.p10t.border-top.m10t
+			.col-lg-12.col-md-12.col-sm-12.col-xs-12
+				.clearfix
+					.pull-left
+						.meta
+							| No account?&nbsp;&nbsp;
+							a(href="/signup") Signup now!
+					.pull-right
+						a.toggle-form.meta.bold Need Help?
+	#helpForm.hide.login-form
+		.row
+			.col-lg-12.col-md-12.col-sm-12
+				input#helpEmail.form-control(placeholder="Your Email address")
+		.row.m10t
+			.col-lg-6.col-md-6.col-sm-6.col-xs-6
+				a#doHelp.btn.btn-primary Help Me!
+			.col-lg-6.col-md-6.col-sm-6.col-xs-6.align-right
+				a.meta.toggle-form.m5t.bold Back to Login

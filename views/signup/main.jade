@@ -1,0 +1,13 @@
+extends ../layoutLogin
+
+append body
+	script(src='/js/controllers/signup.js')
+
+block content
+	#signup
+		include ../partials/signup/_1_account
+		include ../partials/signup/_2a_accountSearch
+		include ../partials/signup/_2b_accountCreate
+		include ../partials/signup/_3_userTeam
+		include ../partials/signup/_4_userProfile
+		include ../partials/signup/_5_finish

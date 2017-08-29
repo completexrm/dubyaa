@@ -1,0 +1,30 @@
+.row.stats-header.secondary
+	.col-md-12.col-sm-12.col-xs-12
+		.clearfix
+			.pull-left.p10l teams
+			.pull-right.p10r
+				span.arrow.ion-ios-arrow-up
+.row.stats-header.tertiary.green
+	.col-md-12.col-sm-12.col-xs-12
+		a.block(href="#newTeam", data-toggle="modal")
+			.fa.fa-plus
+.row.account-section
+	.col-md-12.col-sm-12.col-xs-12.section-body
+		include ../partials/noTeams
+		#accountTeamList
+			include ../partials/loader
+.row.stats-header.secondary
+	.col-md-12.col-sm-12.col-xs-12
+		.clearfix
+			.pull-left.p10l users
+			.pull-right.p10r
+				span.arrow.ion-ios-arrow-up
+.row.stats-header.tertiary.green
+	.col-md-12.col-sm-12.col-xs-12
+		a.block(href="#newUser", data-toggle="modal")
+			.fa.fa-plus
+.row.account-section
+	.col-md-12.col-sm-12.col-xs-12.section-body
+		#accountUserList
+			include ../partials/loader
+		

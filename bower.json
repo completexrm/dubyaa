@@ -1,0 +1,24 @@
+{
+  "name": "experior",
+  "version": "0.0.1",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.2.0",
+    "fontawesome": "~4.2.0",
+    "moment": "~2.8.3",
+    "underscore": "~1.7.0",
+    "backbone": "~1.1.2",
+    "requirejs": "*",
+    "jqueryui": "~1.11.2",
+    "chartjs": "~0.2.0",
+    "ionicons": "~2.0.0"
+  }
+}

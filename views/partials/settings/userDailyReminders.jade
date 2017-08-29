@@ -1,0 +1,20 @@
+label Receive Daily Email Reminders?
+select#onboardReminders.form-control
+	- if(Number(profile.prefs.hasReminders)===1)
+		option(value="1" selected) Yes!
+	- else
+		option(value="1") Yes!
+	- if(Number(profile.prefs.hasReminders)===0)
+		option(value="0" selected) No thanks
+	- else
+		option(value="0") No thanks
+label Receive Daily Text Reminders?
+select#onboardRemindersSMS.form-control
+	- if(Number(profile.prefs.hasRemindersSMS)===1)
+		option(value="1" selected) Yes!
+	- else
+		option(value="1") Yes!
+	- if(Number(profile.prefs.hasRemindersSMS)===0)
+		option(value="0" selected) No thanks
+	- else
+		option(value="0") No thanks
